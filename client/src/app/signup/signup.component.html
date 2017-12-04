@@ -1,3 +1,27 @@
-<p>
-  signup works!
-</p>
+<h2>Signup</h2>
+<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+  <div>
+    <label>Name</label>
+    <input type="text" [(ngModel)]="name" name="name" />
+  </div>
+  <div>
+    <label>Username</label>
+    <input type="text" [(ngModel)]="username" name="username" />
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password" />
+  </div>
+  <div>
+    <label>Mail</label>
+    <input type="password" [(ngModel)]="mail" name="mail" />
+  </div>
+  <div>
+    <label for="">Bio</label>
+    <textarea name="bio" rows="8" cols="80" [(ngModel)]="bio"></textarea>
+  </div>
+  <div>
+    <input type="file">
+  </div>
+  <button type="submit">Save</button>
+</form>
