@@ -3,13 +3,13 @@ const passport   = require('passport');
 const bcrypt     = require('bcrypt');
 
 // Our user model
-const User       = require('../models/User');
+const User  = require('../models/User');
 
 const authRoutes = express.Router();
 
 
 authRoutes.post('/signup', (req, res, next) => {
-  const {username, password} = req.body;
+  const {username, password, name, email, bio} = req.body;
 
   if (!username || !password) {
     res.status(400).json({ message: 'Provide username and password' });
@@ -25,10 +25,13 @@ authRoutes.post('/signup', (req, res, next) => {
 
     const salt     = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
-
+    console.log('entra');
     const theUser = new User({
+      name,
       username,
-      password: hashPass
+      password: hashPass,
+      email,
+      bio
     });
     return theUser.save();
   })
@@ -86,5 +89,14 @@ authRoutes.get('/loggedin', (req, res, next) => {
 
   res.status(403).json({ message: 'Unauthorized' });
 });
+
+// authRoutes.get('/mydashboard', (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     res.json({ message: 'This is a private message' });
+//     return;
+//   }
+//
+//   res.status(403).json({ message: 'Unauthorized' });
+// });
 
 module.exports = authRoutes;

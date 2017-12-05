@@ -1,10 +1,25 @@
-<h2>Login</h2>
-<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
-  <label>Username</label>
-  <input type="text" [(ngModel)]="username" name="username" required/>
-  <br>
-  <label>Password</label>
-  <input type="password" [(ngModel)]="password" name="password" required/>
-
-  <button type="submit">login</button>
-</form>
+<h1> Authentication Front </h1>
+<div>
+  <form (ngSubmit)="submitForm(loginForm)" #loginForm="ngForm" novalidate>
+    <h2>Login</h2>
+    <div>
+      <label> Username </label>
+      <input type="text" [(ngModel)]="username" name="username" required #myusername="ngModel" />
+    </div>
+    <div *ngIf="myusername.errors && (myusername.dirty || myusername.touched)">
+      <p class="error" [hidden]="!myusername.errors.required">
+        Username is required
+      </p>
+    </div>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="password" name="password" required #mypassword="ngModel" />
+    <div *ngIf="mypassword.errors && (mypassword.dirty || mypassword.touched)">
+      <p class="error" [hidden]="!mypassword.errors.required">
+        Password is required
+      </p>
+    </div>
+    <button type="button" (click)="login(username,password)">login</button>
+    <a [routerLink]="['../signup']">Signup</a>
+  </form>
+  <p class="error "> {{ error }} </p>
+</div>

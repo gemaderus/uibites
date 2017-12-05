@@ -1,8 +1,9 @@
+const LocalStrategy = require("passport-local").Strategy;
 const passport   = require('passport');
 const flash = require("connect-flash");
 const bcrypt = require("bcrypt");
 const User = require('../../models/User');
-const LocalStrategy = require("passport-local").Strategy;
+
 const session = require('express-session');
 
 module.exports = (app) => {

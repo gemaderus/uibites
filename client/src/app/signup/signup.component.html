@@ -1,20 +1,20 @@
 <h2>Signup</h2>
-<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+<form (ngSubmit)="submitForm(signupForm)" #signupForm="ngForm" novalidate>
   <div>
     <label>Name</label>
-    <input type="text" [(ngModel)]="name" name="name" />
+    <input type="text" [(ngModel)]="name" name="name" requiered/>
   </div>
   <div>
     <label>Username</label>
-    <input type="text" [(ngModel)]="username" name="username" />
+    <input type="text" [(ngModel)]="username" name="username" requiered/>
   </div>
   <div>
     <label>Password</label>
-    <input type="password" [(ngModel)]="password" name="password" />
+    <input type="password" [(ngModel)]="password" name="password" requiered/>
   </div>
   <div>
     <label>Mail</label>
-    <input type="password" [(ngModel)]="mail" name="mail" />
+    <input type="password" [(ngModel)]="mail" name="mail" requiered/>
   </div>
   <div>
     <label for="">Bio</label>
@@ -23,5 +23,5 @@
   <div>
     <input type="file">
   </div>
-  <button type="submit">Save</button>
+  <button type="button" (click)="signup()">Save</button>
 </form>
