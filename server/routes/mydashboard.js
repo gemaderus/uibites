@@ -2,18 +2,21 @@ const express = require('express');
 const dashboard = express.Router();
 const Card = require('../models/Card');
 const User  = require('../models/User');
+var multer  = require('multer');
+var upload = multer({ dest: './public/uploads/' });
 
 const {
   ensureLoggedIn,
   ensureLoggedOut
 } = require('connect-ensure-login');
 
-dashboard.post('/new-card', ensureLoggedIn(), (req, res, next) => {
+dashboard.post('/new-card', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
  const theCard = new Card({
    title: req.body.title,
    author_id: req.user._id,
    description: req.body.description,
    url: req.body.url,
+   photo: req.file.path;
  });
 
   theCard.save((err) => {

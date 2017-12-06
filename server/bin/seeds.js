@@ -14,14 +14,46 @@ var salt = bcrypt.genSaltSync(bcryptSalt);
 const password = "1234";
 var encryptedPass = bcrypt.hashSync(password, salt);
 
-const users = [{
+const users = [
+  {
     name: 'gema',
     username: 'gema',
     password: encryptedPass,
     email: 'gema@gmail.com',
     bio: 'Living the life',
+  },
+  {
+    name: 'manu',
+    username: 'manu',
+    password: encryptedPass,
+    email: 'manu@gmail.com',
+    bio: 'Oeoeoeoeoe',
+  },
+  {
+    name: 'lola',
+    username: 'lola',
+    password: encryptedPass,
+    email: 'lola@gmail.com',
+    bio: 'Always singing',
+  },
+  {
+    name: 'pablo',
+    username: 'pablo',
+    password: encryptedPass,
+    email: 'pablo@gmail.com',
+    bio: 'Fishing',
   }
 ];
+
+const tags = [
+  {
+    name: "header"
+  },
+
+  {
+    name: "footer"
+  }
+]
 
 User.collection.drop(); //Elimina la colección asociada al modelo. Para que cada vez que lo ejecute, no lo vuelva a crear.
 

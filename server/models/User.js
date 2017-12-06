@@ -20,8 +20,9 @@ const userSchema = new Schema({
   },
   bio: String,
   photo: String,
+  },
 
-}, {
+{
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'

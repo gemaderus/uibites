@@ -90,13 +90,4 @@ authRoutes.get('/loggedin', (req, res, next) => {
   res.status(403).json({ message: 'Unauthorized' });
 });
 
-// authRoutes.get('/mydashboard', (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     res.json({ message: 'This is a private message' });
-//     return;
-//   }
-//
-//   res.status(403).json({ message: 'Unauthorized' });
-// });
-
 module.exports = authRoutes;

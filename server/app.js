@@ -3,6 +3,7 @@ var express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+var multer  = require('multer');
 
 require('./config/database');
 var app = express();
@@ -41,7 +42,7 @@ var likes = require('./routes/likes');
 
 // app.use('/', index);
 app.use('/api/auth', authRoutes);
-app.use('/api/auth', profile);
+app.use('/api/profile', profile);
 app.use('/api/dashboard', dashboard);
 app.use('/api/comments', comments);
 app.use('/api/tags', tags);
