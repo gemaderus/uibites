@@ -25,33 +25,31 @@ dashboard.post('/new-card', ensureLoggedIn(), (req, res, next) => {
   });
 });
 
-dashboard.post('/edit-card/:id', (req, res, next) => {
-
-  console.log("aaaaaa");
+dashboard.post('/edit-card/:id', ensureLoggedIn(), (req, res, next) => {
 
   let id = req.params.id;
   console.log(id);
-  // console.log(id);
+
   const {
     title,
     description,
     url
   } = req.body;
-  //
+
   const updates = {
     title,description,url
   };
 
-  // console.log('Updates =======>', updates);
-  //
-  Card.findByIdAndUpdate(id, updates)
+  Card.findByIdAndUpdate(id, updates, {new: true})
     .then(o => res.status(200).json(o))
     .catch(e => res.status(500).json(e));
 });
 
-dashboard.post('/delete-card/:id',ensureLoggedIn(), (req, res, next) => {
+dashboard.post('/delete-card/:id', ensureLoggedIn(), (req, res, next) => {
   let id = req.params.id;
+  console.log("entro");
   console.log(id);
+
   Card.findByIdAndRemove(id)
     .then(o => res.status(200).json(o))
     .catch(e => res.status(500).json(e));

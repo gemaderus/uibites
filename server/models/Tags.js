@@ -3,11 +3,11 @@ const Schema   = mongoose.Schema;
 
 const tagSchema = new Schema({
   name: String,
-  author_id: {
+  card_id: {
     type: Schema.Types.ObjectId,
-    ref: "User"
-  },
+    ref: "Card"
+  }
 });
 
-const Tag = mongoose.model('User', tagSchema);
+const Tag = mongoose.model('Tag', tagSchema);
 module.exports = Tag;

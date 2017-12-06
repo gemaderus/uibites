@@ -3,15 +3,13 @@ const Schema   = mongoose.Schema;
 
 const commentSchema = new Schema({
   comment: String,
-  rating: Number,
   author_id: {
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  
-  receiver_id: {
+  card_id: {
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "Card"
   },
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" },

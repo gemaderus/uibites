@@ -25,12 +25,13 @@ require('./config/passport/passport')(app);
 require('./config/express')(app);
 
 
-module.exports = authRoutes;
-
 // var index = require('./routes/index');
 var authRoutes = require('./routes/auth');
 var profile = require('./routes/profile');
 var dashboard = require('./routes/mydashboard');
+var comments = require('./routes/comments');
+var tags = require('./routes/tags');
+var likes = require('./routes/likes');
 
 //Configuracion de Routes
 
@@ -41,7 +42,10 @@ var dashboard = require('./routes/mydashboard');
 // app.use('/', index);
 app.use('/api/auth', authRoutes);
 app.use('/api/auth', profile);
-app.use('/api/auth', dashboard);
+app.use('/api/dashboard', dashboard);
+app.use('/api/comments', comments);
+app.use('/api/tags', tags);
+app.use('/api/likes', likes);
 
 app.use((req, res, next) => {
   res.sendfile(__dirname + '/public/index.html');

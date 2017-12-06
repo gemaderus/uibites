@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const likeSchema = new Schema({
-  points: Number,
   author_id: {
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-
-  receiver_id: {
+  card_id: {
     type: Schema.Types.ObjectId,
-    ref: "User"
-  },
+    ref: "Card"
+  }
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
 });
 
-var Like = mongoose.model("Comment", likeSchema);
+var Like = mongoose.model("Like", likeSchema);
+
+
 module.exports = Like;

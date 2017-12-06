@@ -14,8 +14,22 @@ const cardSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-
   url: String,
+
+  // like_id: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Like"
+  // },
+  //
+  // tag_id: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Tag"
+  // },
+  //
+  // comment_id: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Comments"
+  
 
 }, {
   timestamps: {
