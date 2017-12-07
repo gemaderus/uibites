@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../../services/session.service';
-import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Router , ActivatedRoute} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-signup',
@@ -9,17 +10,16 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private auth:SessionService, private router: Router) { }
+  constructor(public auth:AuthService, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   signup(username, password){
+    console.log('entro en signup del componente')
+    console.log(username, password)
     this.auth.signup(username,password).subscribe();
-    this.router.navigate(['/mydashboard']);
+    this.router.navigate(['dashboard/mydashboard']);
   }
 
-  submitForm(signupForm) {
-    console.log(signupForm);
-  }
 }

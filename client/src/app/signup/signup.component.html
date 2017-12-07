@@ -1,27 +1,30 @@
-<h2>Signup</h2>
-<form (ngSubmit)="submitForm(signupForm)" #signupForm="ngForm" novalidate>
-  <div>
-    <label>Name</label>
-    <input type="text" [(ngModel)]="name" name="name" requiered/>
-  </div>
-  <div>
-    <label>Username</label>
-    <input type="text" [(ngModel)]="username" name="username" requiered/>
-  </div>
-  <div>
-    <label>Password</label>
-    <input type="password" [(ngModel)]="password" name="password" requiered/>
-  </div>
-  <div>
-    <label>Mail</label>
-    <input type="password" [(ngModel)]="mail" name="mail" requiered/>
-  </div>
-  <div>
-    <label for="">Bio</label>
-    <textarea name="bio" rows="8" cols="80" [(ngModel)]="bio"></textarea>
-  </div>
-  <div>
-    <input type="file">
-  </div>
-  <button type="button" (click)="signup()">Save</button>
-</form>
+<h1> Authentication Front </h1>
+<div *ngIf="!auth.user">
+  <form>
+    <h2> Login or Signup </h2>
+    <div>
+      <label> Username </label>
+      <input type="text" [(ngModel)]="username" name="username" />
+    </div>
+    <div>
+      <label> Password </label>
+      <input type="password" [(ngModel)]="password" name="password" />
+    </div>
+    <div>
+      <label> Name </label>
+      <input type="text" [(ngModel)]="name" name="name" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" name="email" />
+    </div>
+    <button (click)="login(username,password)"> login </button>
+    <button (click)="signup(username,password)"> signup </button>
+  </form>
+  <p class="error"> {{ error }} </p>
+</div>
+
+<div *ngIf="auth.user">
+  <h2>Welcome {{auth.user.username}}</h2>
+  <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
+</div>

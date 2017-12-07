@@ -10,8 +10,11 @@ import { HeaderComponent } from './header/header.component';
 import { routes } from './routes';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { SessionService } from "../services/session.service";
+import { AuthService } from "../services/auth.service";
+import { DashboardService } from "../services/dashboard.service";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MydashboardComponent } from './mydashboard/mydashboard.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
+    MydashboardComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpModule
   ],
-  providers: [SessionService],
+  providers: [AuthService, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

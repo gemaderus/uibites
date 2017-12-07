@@ -1,4 +1,4 @@
-<h1> Authentication Front </h1>
+<!-- <h1> Authentication Front </h1>
 <div>
   <form (ngSubmit)="submitForm(loginForm)" #loginForm="ngForm" novalidate>
     <h2>Login</h2>
@@ -22,4 +22,12 @@
     <a [routerLink]="['../signup']">Signup</a>
   </form>
   <p class="error "> {{ error }} </p>
-</div>
+</div> -->
+<h2> Login </h2>
+<label> Username </label>
+<input type="text" [(ngModel)]="formInfo.username" name="username" />
+<br>
+<label> Password </label>
+<input type="password" [(ngModel)]="formInfo.password" name="password" />
+
+<button type="button" (click)="login()"> login </button>
