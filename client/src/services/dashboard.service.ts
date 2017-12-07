@@ -24,6 +24,11 @@ export class DashboardService {
       .map(res => res.json());
   }
 
+  getCardByID(id):Observable<any>{
+    return this.http.get(`${BASE_URL}/dashboard/edit-card/${id}`)
+                    .map(res => res.json());
+}
+
   deleteCard(id){
     console.log(id)
     console.log("entro en el front");

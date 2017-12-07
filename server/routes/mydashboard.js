@@ -44,7 +44,15 @@ dashboard.post('/new-card', upload.single('photo'), ensureLoggedIn(), (req, res,
   });
 });
 
-dashboard.post('/edit-card/:id', ensureLoggedIn(), (req, res, next) => {
+dashboard.get('/edit-card/:id', (req, res, next) => {
+  let id = req.params.id;
+
+  Card.findById(id)
+    .then(list => {res.json(list); console.log(list)})
+    .catch(e => res.json(e));
+});
+
+dashboard.post('/edit-card/:id', (req, res, next) => {
 
   let id = req.params.id;
   console.log(id);

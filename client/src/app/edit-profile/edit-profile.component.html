@@ -1,0 +1,32 @@
+<form>
+  <h2>Your profile</h2>
+  <div>
+    <label> Name </label>
+    <input type="text" [(ngModel)]="name" name="name" />
+  </div>
+  <div>
+    <label>Username</label>
+    <input type="text" [(ngModel)]="username" name="username" />
+  </div>
+  <div>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="password" name="password" />
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" name="email" />
+  </div>
+  <div>
+    <label>Bio</label>
+    <input type="text" [(ngModel)]="bio" name="bio" />
+  </div>
+  <div>
+    <label>Photo</label>
+    <input type="file" [(ngModel)]="photo" name="photo" />
+  </div>
+  <button>save</button>
+  <button (click)="deleteUser()">delete</button>
+</form>
+<p class="error"> {{ error }} </p>
+<!-- </div> -->

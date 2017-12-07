@@ -4,6 +4,6 @@
     <h1> {{ card.title }}</h1>
     <p>{{ card.description }}</p>
     <a [routerLink]="['../edit-card', card._id]"> View Details </a>
-    <button (click)="deleteCard(card._id)"> Delete </button>
+    <!-- <button (click)="deleteCard(card._id)"> Delete </button> -->
   </li>
 </ul>

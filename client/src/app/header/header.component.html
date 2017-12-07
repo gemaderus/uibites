@@ -9,4 +9,13 @@
   <li>
     <a [routerLink]="['']" (click)="logout()">Logout</a>
   </li>
+  <li>
+    <div *ngIf="auth.user">
+      <h2>Welcome {{auth.user.username}}</h2>
+      <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
+      <a [routerLink]="['profile', auth.user._id]">My profile</a>
+      <a [routerLink]="['profile', 'edit-profile']">Edit profile</a>
+      <a [routerLink]="['dashboard', 'mydashboard']">My dashboard</a>
+    </div>
+  </li>
 </ul>

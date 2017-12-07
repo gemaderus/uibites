@@ -27,10 +27,10 @@ export class MydashboardComponent implements OnInit {
     })
   }
 
-    deleteCard(id){
-    this.dashboardService.deleteCard(id).subscribe(() =>{
-      this.router.navigate(['/']);
-    });
-  }
+    // deleteCard(id){
+    // this.dashboardService.deleteCard(id).subscribe(() =>{
+    //   this.router.navigate(['/dashboard/mydashboard']);
+    // });
+  // }
 
 }

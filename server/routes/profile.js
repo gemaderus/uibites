@@ -9,6 +9,12 @@ const {
   ensureLoggedOut
 } = require('connect-ensure-login');
 
+profileRoutes.get('/:id', (req, res) => {
+   User.findById(req.params.id)
+     .then(o => res.json(o))
+     .catch(e => res.json(e));
+ });
+
 profileRoutes.post('/edit-profile', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
 
 
@@ -39,7 +45,7 @@ profileRoutes.post('/edit-profile', upload.single('photo'), ensureLoggedIn(), (r
 });
 
 
-profileRoutes.post('/delete', ensureLoggedIn(), (req, res, next) => {
+profileRoutes.delete('/delete', (req, res, next) => {
   let id = req.user._id;
   console.log(id);
   User.findByIdAndRemove(id, (error) => {
