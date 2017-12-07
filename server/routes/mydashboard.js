@@ -10,13 +10,29 @@ const {
   ensureLoggedOut
 } = require('connect-ensure-login');
 
+dashboard.get('/', (req, res, next) => {
+  Card.find()
+    .then(list => {res.json(list); console.log(list)})
+    .catch(e => res.json(e));
+});
+
+dashboard.get('/mydashboard', (req, res, next) => {
+  console.log("dentro de mydashboard");
+console.log(req.user);
+  let id = req.user.id;
+
+  Card.find({author_id: id})
+    .then(list => {res.status(201).json(list)})
+    .catch(e => res.status(400).json(e));
+});
+
 dashboard.post('/new-card', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
  const theCard = new Card({
    title: req.body.title,
    author_id: req.user._id,
    description: req.body.description,
    url: req.body.url,
-   photo: req.file.path;
+   photo: req.file.path
  });
 
   theCard.save((err) => {
@@ -48,9 +64,10 @@ dashboard.post('/edit-card/:id', ensureLoggedIn(), (req, res, next) => {
     .catch(e => res.status(500).json(e));
 });
 
-dashboard.post('/delete-card/:id', ensureLoggedIn(), (req, res, next) => {
+dashboard.delete('/delete-card/:id', (req, res, next) => {
+  console.log("HOLI")
   let id = req.params.id;
-  console.log("entro");
+  console.log("entro en el back");
   console.log(id);
 
   Card.findByIdAndRemove(id)

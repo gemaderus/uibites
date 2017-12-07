@@ -13,7 +13,7 @@ const cards = [
   title: "header",
   description: "soy un big header",
   url: "http://www.allwhitebackground.com/images/3/3813.jpg",
-  photo:'',
+  photo:"http://www.allwhitebackground.com/images/3/3813.jpg",
   author_id: "5a2824c908d8ec2a9fbc1729"
 },
 
@@ -21,7 +21,7 @@ const cards = [
   title: "footer",
   description: "soy un big footer",
   url: "https://cdn.dribbble.com/users/11867/screenshots/3997796/2.jpg",
-  photo:'',
+  photo:"https://cdn.dribbble.com/users/11867/screenshots/3997796/2.jpg",
   author_id: "5a2824c908d8ec2a9fbc1729"
 },
 
@@ -29,56 +29,56 @@ const cards = [
   title: "clinic design",
   description: "soy un design",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172a"
 },
 {
   title: "Goldex",
   description: "I'm a credit card",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172a"
 },
 {
   title: "Future Light",
   description: "I'm so good",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172b"
 },
 {
   title: "Phones",
   description: "I'm a phone",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172b"
 },
 {
   title: "Table",
   description: "I'm a table",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172c"
 },
 {
   title: "Golden",
   description: "Golden Mac",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172c"
 },
 {
   title: "People",
   description: "People are funny",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172c"
 },
 {
   title: "Milk",
   description: "I'm the fucking milk",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  photo:'',
+  photo: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   author_id: "5a2824c908d8ec2a9fbc172c"
 }
 ]

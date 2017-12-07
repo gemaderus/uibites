@@ -7,10 +7,16 @@ const User  = require('../models/User');
 
 const authRoutes = express.Router();
 
+const {
+  ensureLoggedIn,
+  ensureLoggedOut
+} = require('connect-ensure-login');
+
 
 authRoutes.post('/signup', (req, res, next) => {
+  console.log('llego al signup del back')
   const {username, password, name, email, bio} = req.body;
-
+  console.log({username, password, name, email});
   if (!username || !password) {
     res.status(400).json({ message: 'Provide username and password' });
     return;
@@ -31,7 +37,6 @@ authRoutes.post('/signup', (req, res, next) => {
       username,
       password: hashPass,
       email,
-      bio
     });
     return theUser.save();
   })
@@ -52,8 +57,10 @@ authRoutes.post('/signup', (req, res, next) => {
   });
 });
 
-authRoutes.post('/login', (req, res, next) => {
+authRoutes.post('/login',(req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
+    console.log("llego aqui");
+
     if (err) {
       res.status(500).json({ message: 'Something went wrong' });
       return;
@@ -69,14 +76,14 @@ authRoutes.post('/login', (req, res, next) => {
         res.status(500).json({ message: 'Something went wrong' });
         return;
       }
-
       // We are now logged in (notice req.user)
       res.status(200).json(req.user);
     });
   })(req, res, next);
 });
 
-authRoutes.post('/logout', (req, res, next) => {
+authRoutes.get('/logout',(req, res, next) => {
+  console.log("entrando");
   req.logout();
   res.status(200).json({ message: 'Success' });
 });

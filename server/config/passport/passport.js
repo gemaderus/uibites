@@ -1,6 +1,5 @@
 const LocalStrategy = require("passport-local").Strategy;
 const passport   = require('passport');
-const flash = require("connect-flash");
 const bcrypt = require("bcrypt");
 const User = require('../../models/User');
 
@@ -17,9 +16,7 @@ module.exports = (app) => {
       cb(null, user);
     });
   });
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(flash());
+
 
 
   passport.use(new LocalStrategy((username, password, next) => {
@@ -43,4 +40,5 @@ module.exports = (app) => {
     res.locals.user = req.user;
     next();
   });
+
 };

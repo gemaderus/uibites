@@ -9,22 +9,13 @@ const session  = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
+const flash = require("connect-flash");
+
 // var app = express();
 
 
 module.exports = (app) => {
-  var whitelist = [
-      'http://localhost:4200',
-  ];
-  var corsOptions = {
-      origin: function(origin, callback){
-          var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-          callback(null, originIsWhitelisted);
-      },
-      credentials: true
-  };
 
-  app.use(cors(corsOptions));
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'ejs');
   app.use(express.static(path.join(__dirname, 'public')));
@@ -39,12 +30,13 @@ module.exports = (app) => {
     res.locals.user = req.user;
     next();
   });
+  app.use(flash());
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use((req,res,next) => {
-    res.locals.title = "UI Bites";
-    res.locals.user = req.user;
-    next();
-  });
+  // app.use((req,res,next) => {
+  //   res.locals.title = "UI Bites";
+  //   res.locals.user = req.user;
+  //   next();
+  // });
 }

@@ -4,9 +4,22 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 var multer  = require('multer');
+const cors = require ("cors")
+var app = express();
 
 require('./config/database');
-var app = express();
+var whitelist = [
+    'http://localhost:4200',
+];
+var corsOptions = {
+    origin: function(origin, callback){
+        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(session({
     secret: 'ui-bites',
     // secret: process.env.SECRET,
@@ -48,9 +61,9 @@ app.use('/api/comments', comments);
 app.use('/api/tags', tags);
 app.use('/api/likes', likes);
 
-app.use((req, res, next) => {
-  res.sendfile(__dirname + '/public/index.html');
-});
+// app.use((req, res, next) => {
+//   res.sendfile(__dirname + '/public/index.html');
+// });
 
 require('./config/error-handler')(app);
 
