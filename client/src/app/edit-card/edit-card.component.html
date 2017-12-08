@@ -2,22 +2,18 @@
 <!-- <div *ngIf="!auth.user"> -->
 <form>
   <div>
-    <label> Username </label>
-    <input type="text" [(ngModel)]="username" name="username" />
+    <label>Title</label>
+    <input type="text" [(ngModel)]="title" name="title" />
   </div>
   <div>
-    <label> Password </label>
-    <input type="password" [(ngModel)]="password" name="password" />
+    <label>Description</label>
+    <input type="text" [(ngModel)]="description" name="description" />
   </div>
   <div>
-    <label> Name </label>
-    <input type="text" [(ngModel)]="name" name="name" />
+    <label>Url</label>
+    <input type="text" [(ngModel)]="description" name="description" />
   </div>
-  <div>
-    <label>Email</label>
-    <input type="email" [(ngModel)]="email" name="email" />
-  </div>
-  <button>Save</button>
+  <button (click)="submit()">Save</button>
   <!-- <button (click)="signup(username,password)"> signup </button> -->
 </form>
 <!-- <p class="error"> {{ error }} </p> -->

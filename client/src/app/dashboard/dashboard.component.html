@@ -1,6 +1,6 @@
 <ul class="cards-list">
   <li *ngFor="let card of cards">
-    <img [src]="card.photo" alt="">
+    <img src="http://localhost:3000/{{card.photo}}" alt="">
     <h1> {{ card.title }}</h1>
     <p>{{ card.description }}</p>
     <a [routerLink]="['card', card._id]">View detail</a>

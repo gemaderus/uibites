@@ -22,6 +22,8 @@ import { EditCardComponent } from './edit-card/edit-card.component';
 import { NewCardComponent } from './new-card/new-card.component';
 import { FilterPipe } from './filter.pipe';
 
+import { FileSelectDirective } from "ng2-file-upload";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { FilterPipe } from './filter.pipe';
     EditProfileComponent,
     EditCardComponent,
     NewCardComponent,
-    FilterPipe
+    FilterPipe,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

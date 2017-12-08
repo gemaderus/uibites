@@ -26,17 +26,20 @@ console.log(req.user);
     .catch(e => res.status(400).json(e));
 });
 
-dashboard.post('/new-card', upload.single('photo'), (req, res, next) => {
+
+dashboard.post('/new-card', upload.single('file'), (req, res, next) => {
+console.log(req.body)
  const theCard = new Card({
    title: req.body.title,
    author_id: req.user._id,
    description: req.body.description,
    url: req.body.url,
-   photo: req.file.path
+   photo: `/uploads/${req.file.filename}`,
  });
-
+console.log(theCard)
   theCard.save((err) => {
     if (err) {
+      console.log(err)
       next(err);
       return;
     }

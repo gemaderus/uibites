@@ -2,20 +2,20 @@
 <form>
   <div>
     <label>Title</label>
-    <input type="text" [(ngModel)]="title" name="title" />
+    <input type="text" [(ngModel)]="newCard.title" name="title" />
   </div>
   <div>
     <label>Description</label>
-    <input type="text" [(ngModel)]="description" name="description" />
+    <input type="text" [(ngModel)]="newCard.description" name="description" />
   </div>
   <div>
-    <label>Tag</label>
-    <input type="text" [(ngModel)]="tag" name="tag" />
+    <label>url</label>
+    <input type="text" [(ngModel)]="newCard.url" name="url" />
   </div>
   <div>
     <label>Image</label>
-    <input type="file" [(ngModel)]="image" name="image" />
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
   </div>
-  <button>Upload</button>
+  <button (click)="submit()">Upload</button>
   <!-- <button (click)="signup(username,password)"> signup </button> -->
 </form>
