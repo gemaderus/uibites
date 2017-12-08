@@ -18,6 +18,10 @@
       <label>Email</label>
       <input type="email" [(ngModel)]="email" name="email" />
     </div>
+    <div>
+      <label>Photo</label>
+      <input type="file" [(ngModel)]="photo" name="photo" />
+    </div>
     <button (click)="login(username,password)"> login </button>
     <button (click)="signup(username,password)"> signup </button>
   </form>

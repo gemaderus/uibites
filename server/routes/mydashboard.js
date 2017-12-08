@@ -3,7 +3,7 @@ const dashboard = express.Router();
 const Card = require('../models/Card');
 const User  = require('../models/User');
 var multer  = require('multer');
-var upload = multer({ dest: './public/uploads/' });
+const upload = require('../config/multer');
 
 const {
   ensureLoggedIn,

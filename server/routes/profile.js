@@ -1,8 +1,6 @@
 const express = require('express');
 const profileRoutes = express.Router();
 const User = require('../models/User');
-var multer  = require('multer');
-var upload = multer({ dest: './public/uploads/' });
 
 const {
   ensureLoggedIn,
@@ -15,17 +13,16 @@ profileRoutes.get('/:id', (req, res) => {
      .catch(e => res.json(e));
  });
 
- profileRoutes.get('/edit-profile/:id', (req, res) => {
-    User.findById(req.params.id)
-      .then(o => res.json(o))
-      .catch(e => res.json(e));
-  });
+profileRoutes.get('/edit-profile/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then(o => res.json(o))
+    .catch(e => res.json(e));
+});
 
-profileRoutes.post('/edit-profile/:id', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
-
-
-  console.log('Req.file =======>', req.file);
-  photo = req.file.path;
+profileRoutes.post('/edit-profile/:id', (req, res, next) => {
+  console.log('shkqwjskqå');
+  console.log('FOTO --->');
+  // photo = 'req.file.path';
 
   let id = req.user._id;
   const {
@@ -36,7 +33,7 @@ profileRoutes.post('/edit-profile/:id', upload.single('photo'), ensureLoggedIn()
   } = req.body;
 
   const updates = {
-    name,username,email,bio,photo
+    name,username,email,bio
   };
 
 
