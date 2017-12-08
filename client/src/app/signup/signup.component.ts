@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
     console.log('entro en signup del componente')
     console.log(username, password)
     this.auth.signup(username,password).subscribe();
-    this.router.navigate(['dashboard/mydashboard']);
+    this.router.navigate(['/']);
   }
 
 }
