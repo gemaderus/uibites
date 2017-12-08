@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     password: ""
   };
 
-  constructor(public auth:AuthService, public router: Router, public route: ActivatedRoute) { }
+  constructor( public auth:AuthService, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
     if(username != "" && password != ""){
       console.log(`Login with ${username} ${password}`)
       this.auth.login(username, password)
-      .subscribe(user => console.log(user))
-      this.router.navigate(['/']);
+      .subscribe((user)=> {
+        this.router.navigate([''])
+      })
 
     } else{
       console.log("You must set a username and a password");

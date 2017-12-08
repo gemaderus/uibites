@@ -1,6 +1,8 @@
-<img [src]="card.photo" alt="">
-<h1> {{ card.title }}</h1>
-<p>{{ card.description }}</p>
-<p>Soy el detalle de una card</p>
-<button (click)="deleteCard(card._id)">Delete</button>
-<a [routerLink]="['../../edit-card', card._id]">Edit</a>
+<div *ngIf="card">
+  <img [src]="card.photo" alt="">
+  <h1> {{ card.title }}</h1>
+  <p>{{ card.description }}</p>
+  <p>Soy el detalle de una card</p>
+  <button (click)="deleteCard(card._id)">Delete</button>
+  <a [routerLink]="['../../edit-card', card._id]">Edit</a>
+</div>

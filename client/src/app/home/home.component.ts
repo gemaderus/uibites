@@ -10,12 +10,14 @@ export class HomeComponent implements OnInit {
 
   cards:any = [];
   constructor(public dashboardService: DashboardService) {
-    this.dashboardService.getList()
-    .map(dashboard => {this.cards = dashboard; console.log(this.cards);})
-    .subscribe();
+    this.start()
   }
 
   ngOnInit() {
   }
 
+  start() {
+    this.dashboardService.getList()
+    .subscribe(dashboard => {this.cards = dashboard; console.log(this.cards);});
+  }
 }

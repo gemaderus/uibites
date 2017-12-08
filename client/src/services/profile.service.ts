@@ -34,5 +34,12 @@ export class ProfileService {
                     .map(res => res.json());
   }
 
+  getEditUser(id){
+    // console.log(id)
+    // console.log("entro en el front");
+    return this.http.get(`${BASE_URL}/profile/edit-profile/${id}`)
+                    .map(res => res.json());
+  }
+
 
 }

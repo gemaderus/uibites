@@ -1,6 +1,8 @@
-<p>
-  Soy tu personal profile</p>
-<p>{{ user.username }}</p>
-<p>{{ user.name }}</p>
-<p>{{user.email}}</p>
-<p>{{user.bio}}</p>
+<div *ngIf="user">
+  <p>
+    Soy tu personal profile</p>
+  <p>{{ user.username }}</p>
+  <p>{{ user.name }}</p>
+  <p>{{user.email}}</p>
+  <p>{{user.bio}}</p>
+</div>

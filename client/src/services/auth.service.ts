@@ -46,8 +46,8 @@ export class AuthService {
     login(username,password) {
       console.log(username, password)
       return this.http.post(`${BASEURL}/login`, {username, password}, this.options)
-        // .map(user => this.emitUserLoginEvent(user))
         .map(res => res.json())
+        .map(user => this.emitUserLoginEvent(user))
         .catch(this.handleError);
     }
 

@@ -1,7 +1,7 @@
-<form>
+<form (ngSubmit)="submitForm(profileForm)" #profileForm="ngForm">
   <h2>Your profile</h2>
   <div>
-    <label> Name </label>
+    <label>Name</label>
     <input type="text" [(ngModel)]="name" name="name" />
   </div>
   <div>
@@ -25,7 +25,7 @@
     <label>Photo</label>
     <input type="file" [(ngModel)]="photo" name="photo" />
   </div>
-  <button>save</button>
+  <button type="submit">save</button>
   <button (click)="deleteUser()">delete</button>
 </form>
 <p class="error"> {{ error }} </p>

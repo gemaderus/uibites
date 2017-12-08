@@ -15,7 +15,13 @@ profileRoutes.get('/:id', (req, res) => {
      .catch(e => res.json(e));
  });
 
-profileRoutes.post('/edit-profile', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
+ profileRoutes.get('/edit-profile/:id', (req, res) => {
+    User.findById(req.params.id)
+      .then(o => res.json(o))
+      .catch(e => res.json(e));
+  });
+
+profileRoutes.post('/edit-profile/:id', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
 
 
   console.log('Req.file =======>', req.file);

@@ -23,13 +23,11 @@ export const routes: Routes = [
     { path: 'dashboard/card/:id', component: CardComponent },
     // { path: 'dashboard/delete-card/:id', component: CardComponent },
 
-    { path: 'profile/edit-profile', component: EditProfileComponent },
+    { path: 'profile/edit-profile/:id', component: EditProfileComponent },
     // { path: 'profile/delete', component: HomeComponent },
     { path: 'profile/:id', component: ProfileComponent },
     // { path: '/:id', component: ProfileComponent },
 
-
-    // { path: 'signup',  component: SignupComponent,  },
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: '**', redirectTo: '' }
 ];
