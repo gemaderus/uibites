@@ -5,6 +5,6 @@
     <img [src]="card.photo" alt="">
     <h1> {{ card.title }}</h1>
     <p>{{ card.description }}</p>
-    <a [routerLink]="['dashboard/edit-card', card._id]"> View Details </a>
+    <a [routerLink]="['dashboard', 'card', card._id]"> View Details </a>
   </li>
 </ul>

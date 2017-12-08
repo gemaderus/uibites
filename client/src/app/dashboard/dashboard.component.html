@@ -3,6 +3,8 @@
     <img [src]="card.photo" alt="">
     <h1> {{ card.title }}</h1>
     <p>{{ card.description }}</p>
-    <a [routerLink]="['edit-card', card._id]">View detail</a>
+    <a [routerLink]="['card', card._id]">View detail</a>
+    <button>Me gusta</button>
+    <span>Número de comentarios <span>5</span></span>
   </li>
 </ul>

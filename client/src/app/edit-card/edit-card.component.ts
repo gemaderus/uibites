@@ -4,12 +4,11 @@ import { AuthService } from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'app-edit-card',
+  templateUrl: './edit-card.component.html',
+  styleUrls: ['./edit-card.component.css']
 })
-export class CardComponent implements OnInit {
-
+export class EditCardComponent implements OnInit {
   card;
 
   constructor(public dashboardService: DashboardService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
@@ -21,9 +20,4 @@ export class CardComponent implements OnInit {
     })
   }
 
-  deleteCard(id){
-  this.dashboardService.deleteCard(id).subscribe(() =>{
-    this.router.navigate(['/dashboard/mydashboard']);
-  });
-  }
 }

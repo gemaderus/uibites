@@ -25,9 +25,14 @@ export class DashboardService {
   }
 
   getCardByID(id):Observable<any>{
-    return this.http.get(`${BASE_URL}/dashboard/edit-card/${id}`)
+    return this.http.get(`${BASE_URL}/dashboard/card/${id}`)
                     .map(res => res.json());
 }
+
+  getEditCardByID(id):Observable<any>{
+    return this.http.get(`${BASE_URL}/dashboard/edit-card/${id}`)
+                    .map(res => res.json());
+  }
 
   deleteCard(id){
     console.log(id)
@@ -35,4 +40,10 @@ export class DashboardService {
     return this.http.delete(`${BASE_URL}/dashboard/delete-card/${id}`)
                     .map(res => res.json());
   }
+
+  // newCard() {
+  //   return this.http.post(`${BASE_URL}/dashboard/new-card`, {title, author_id, description, url, photo}, this.options)
+  //     .map(res => res.json())
+  //     .catch(this.handleError);
+  // }
 }

@@ -18,6 +18,8 @@ import { MydashboardComponent } from './mydashboard/mydashboard.component';
 import { CardComponent } from './card/card.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditCardComponent } from './edit-card/edit-card.component';
+import { NewCardComponent } from './new-card/new-card.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,11 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     SignupComponent,
     DashboardComponent,
     MydashboardComponent,
-    // CardComponent,
+    CardComponent,
     ProfileComponent,
     EditProfileComponent,
+    EditCardComponent,
+    NewCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@ console.log(req.user);
     .catch(e => res.status(400).json(e));
 });
 
-dashboard.post('/new-card', upload.single('photo'), ensureLoggedIn(), (req, res, next) => {
+dashboard.post('/new-card', upload.single('photo'), (req, res, next) => {
  const theCard = new Card({
    title: req.body.title,
    author_id: req.user._id,
@@ -42,6 +42,14 @@ dashboard.post('/new-card', upload.single('photo'), ensureLoggedIn(), (req, res,
     }
     res.status(200).json(theCard);
   });
+});
+
+dashboard.get('/card/:id', (req, res, next) => {
+  let id = req.params.id;
+
+  Card.findById(id)
+    .then(list => {res.json(list); console.log(list)})
+    .catch(e => res.json(e));
 });
 
 dashboard.get('/edit-card/:id', (req, res, next) => {
