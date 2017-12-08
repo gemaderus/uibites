@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditCardComponent } from './edit-card/edit-card.component';
 import { NewCardComponent } from './new-card/new-card.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NewCardComponent } from './new-card/new-card.component';
     EditProfileComponent,
     EditCardComponent,
     NewCardComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
