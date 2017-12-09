@@ -11,9 +11,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CardComponent implements OnInit {
 
   card;
-  comments: Object[];
-  newComments: Object = {};
+  // comments: Object[];
+  // newComments: Object = {};
   //newComment: Object = {};
+  newLikes = {
+    likes: 0
+}
 
   constructor(public dashboardService: DashboardService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
 
@@ -25,11 +28,18 @@ export class CardComponent implements OnInit {
   }
 
   deleteCard(id){
-  this.dashboardService.deleteCard(id).subscribe(() =>{
+    this.dashboardService.deleteCard(id).subscribe(() =>{
     this.router.navigate(['/dashboard', '/mydashboard']);
   });
-  }
+}
 
+likeAdd($scope) {
+  $scope.newLikes = this.newLikes;
+  $scope.incrementLikes = function(count){
+    count.likes++;
+  }
+  //document.getElementById("like").innerHTML(count);
+}
   // addComments(){
   //   console.log("Add contact has been called");
   //   this.comments.push(this.newComments);
