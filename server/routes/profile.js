@@ -19,10 +19,10 @@ profileRoutes.get('/edit-profile/:id', (req, res) => {
     .catch(e => res.json(e));
 });
 
-profileRoutes.post('/edit-profile/:id', (req, res, next) => {
+profileRoutes.put('/edit-profile/:id', (req, res, next) => {
   console.log('shkqwjskqå');
   console.log('FOTO --->');
-  // photo = 'req.file.path';
+  photo = 'req.file.path';
 
   let id = req.user._id;
   const {
@@ -33,7 +33,7 @@ profileRoutes.post('/edit-profile/:id', (req, res, next) => {
   } = req.body;
 
   const updates = {
-    name,username,email,bio
+    name,username,email,bio,photo
   };
 
 

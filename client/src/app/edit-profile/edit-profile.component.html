@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitForm(profileForm)" #profileForm="ngForm">
+<!-- <form (ngSubmit)="submitForm(profileForm)" #profileForm="ngForm">
   <h2>Your profile</h2>
   <div>
     <label>Name</label>
@@ -22,7 +22,33 @@
     <input type="text" [(ngModel)]="bio" name="bio" />
   </div>
   <button type="submit">save</button>
+</form>
+
+<form action="">
   <button (click)="deleteUser()">delete</button>
 </form>
-<p class="error"> {{ error }} </p>
+<p class="error"> {{ error }} </p> -->
 <!-- </div> -->
+<h1>Edit Your Profile</h1>
+<!-- <div *ngIf="!auth.user"> -->
+<form>
+  <div>
+    <label>Name</label>
+    <input type="text" [(ngModel)]="formUser.name" name="name" />
+  </div>
+  <div>
+    <label>Username</label>
+    <input type="text" [(ngModel)]="formUser.username" name="username" />
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="text" [(ngModel)]="formUser.email" name="email" />
+  </div>
+  <div>
+    <label>Bio</label>
+    <input type="text" [(ngModel)]="formUser.bio" name="bio" />
+  </div>
+  <button type="button" (click)="editUser()">Save</button>
+  <!-- <button (click)="submit()">Upload</button> -->
+  <!-- <button (click)="signup(username,password)"> signup </button> -->
+</form>

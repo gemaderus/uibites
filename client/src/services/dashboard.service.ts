@@ -9,11 +9,17 @@ const BASE_DOMAIN = 'http://localhost:3000';
 const BASE_URL = `${BASE_DOMAIN}/api`;
 
 
+
+
+
 @Injectable()
 export class DashboardService {
+  card:any;
+
   private options = {withCredentials:true};
 
   constructor(private http: Http) {}
+
   getList(): Observable<any> {
     return this.http.get(`${BASE_URL}/dashboard`,this.options)
       .map(res => res.json());
@@ -33,6 +39,11 @@ export class DashboardService {
     return this.http.get(`${BASE_URL}/dashboard/edit-card/${id}`)
                     .map(res => res.json());
   }
+
+  editCard(id, card) {
+   return this.http.put(`${BASE_URL}/dashboard/edit-card/${id}`,card, this.options)
+    .map((res) => res.json());
+ }
 
   deleteCard(id){
     console.log(id)

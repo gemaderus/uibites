@@ -11,6 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CardComponent implements OnInit {
 
   card;
+  comments: Object[];
+  newComments: Object = {};
+  //newComment: Object = {};
 
   constructor(public dashboardService: DashboardService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
 
@@ -23,7 +26,13 @@ export class CardComponent implements OnInit {
 
   deleteCard(id){
   this.dashboardService.deleteCard(id).subscribe(() =>{
-    this.router.navigate(['/dashboard/mydashboard']);
+    this.router.navigate(['/dashboard', '/mydashboard']);
   });
   }
+
+  // addComments(){
+  //   console.log("Add contact has been called");
+  //   this.comments.push(this.newComments);
+  //   this.newComments = {}
+  // };
 }

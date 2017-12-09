@@ -63,7 +63,7 @@ dashboard.get('/edit-card/:id', (req, res, next) => {
     .catch(e => res.json(e));
 });
 
-dashboard.post('/edit-card/:id', (req, res, next) => {
+dashboard.put('/edit-card/:id', (req, res, next) => {
 
   let id = req.params.id;
   console.log(id);

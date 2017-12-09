@@ -21,12 +21,20 @@ export class ProfileService {
     .map(res => res.json());
   }
 
-  // updateUser() {
-  //   return this.http.post(`${BASEURL}/profile/edit-profile`, {name,username,email, bio, photo}, this.options)
-  //     .map(res => res.json())
-  //     .map(user => this.emitUserLoginEvent(user))
-  //     .catch(this.handleError);
-  // }
+  editUser(id, user) {
+    return this.http.put(`${BASE_URL}/profile/edit-profile/${id}`, user, this.options)
+      .map(res => res.json())
+      // .map(user => this.emitUserLoginEvent(user))
+      // .catch(this.handleError);
+  }
+
+// {name,username,email, bio, photo}
+
+ //  editCard(id, card) {
+ //   return this.http.put(`${BASE_URL}/dashboard/edit-card/${id}`,card, this.options)
+ //    .map((res) => res.json());
+ // }
+
   getUserDetail(id){
     // console.log(id)
     // console.log("entro en el front");

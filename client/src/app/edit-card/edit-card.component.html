@@ -3,18 +3,34 @@
 <form>
   <div>
     <label>Title</label>
-    <input type="text" [(ngModel)]="title" name="title" />
+    <input type="text" [(ngModel)]="formInfo.title" name="title" />
   </div>
   <div>
     <label>Description</label>
-    <input type="text" [(ngModel)]="description" name="description" />
+    <input type="text" [(ngModel)]="formInfo.description" name="description" />
   </div>
   <div>
     <label>Url</label>
-    <input type="text" [(ngModel)]="description" name="description" />
+    <input type="text" [(ngModel)]="formInfo.url" name="url" />
   </div>
-  <button (click)="submit()">Save</button>
-  <!-- <button (click)="signup(username,password)"> signup </button> -->
+  <button (click)="editCard()">Save</button>
 </form>
+<!-- </div> -->
 <!-- <p class="error"> {{ error }} </p> -->
 <!-- </div> -->
+<!-- <form (ngSubmit)="editCard(formInfo)" #formInfo="ngForm">
+  <div>
+    <label>Title</label>
+    <input type="text" [(ngModel)]="title" #myTitle="ngModel" name="title" />
+  </div>
+  <div>
+    <label>Description</label>
+    <input type="text" [(ngModel)]="description" name="description" #myDescription="ngModel" />
+  </div>
+  <div>
+    <label>Url</label>
+    <input type="text" [(ngModel)]="url" #myUrl="ngModel" name="url" />
+  </div>
+  <button type="submit">Save</button>
+  <!-- <button (click)="signup(username,password)"> signup </button> -->
+<!-- </form> -->

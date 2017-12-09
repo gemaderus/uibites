@@ -1,8 +1,27 @@
 <div *ngIf="card">
-  <img [src]="card.photo" alt="">
+  <img src="http://localhost:3000/{{card.photo}}" alt=" ">
   <h1> {{ card.title }}</h1>
   <p>{{ card.description }}</p>
-  <p>Soy el detalle de una card</p>
-  <button (click)="deleteCard(card._id)">Delete</button>
-  <a [routerLink]="['../../edit-card', card._id]">Edit</a>
+  <p>{{ card.url }}</p>
+  <button (click)="deleteCard(card._id) ">Delete</button>
+  <a [routerLink]="[ '../../edit-card', card._id] ">Edit</a>
+
+  <div>
+    <h2>Deja tu comentarios</h2>
+    <input type="text">
+    <button (click)="addComments(newComment)">Deja tu comentario</button>
+  </div>
+  <!-- <div>
+    <h2>Deja tu comentarios</h2>
+    <textarea name="" id="" cols="30" rows="10" [(ngModel)]="newComment.content"></textarea>
+    <button (click)="addComments(newComment)">Enviar comentario</button>
+  </div> -->
 </div>
+
+<!-- <div>
+  <ul>
+    <li *ngFor="let e of comments, let i = index">
+      <p>{{ e.content }}</p>
+    </li>
+  </ul>
+</div> -->
