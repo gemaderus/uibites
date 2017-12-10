@@ -1,4 +1,4 @@
-<a [routerLink]="['signup']">Sign in</a>
+<!-- <a [routerLink]="['signup']">Sign in</a>
 <ul class="cards-list">
   <li *ngFor="let card of cards">
     <img src="http://localhost:3000/{{card.photo}}" alt="">
@@ -6,4 +6,21 @@
     <p>{{ card.description }}</p>
     <a [routerLink]="['dashboard', 'card', card._id]"> View Details </a>
   </li>
-</ul>
+</ul> -->
+
+<div *ngIf="user; else elseBlock">
+  Soy {{ user.name}}
+  <ul class="cards-list">
+    <li *ngFor="let card of cards">
+      <img src="http://localhost:3000/{{card.photo}}" alt="">
+      <h1> {{ card.title }}</h1>
+      <p>{{ card.description }}</p>
+      <a [routerLink]="['dashboard', 'card', card._id]"> View Details </a>
+    </li>
+  </ul>
+</div>
+
+<ng-template #elseBlock>
+  <a href="/login">Login home</a>
+  <p>Aquí iría la landing</p>
+</ng-template>

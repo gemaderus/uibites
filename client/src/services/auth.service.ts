@@ -1,8 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
-import {Http} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs';
-
+//import { HttpHeaders } from '@angular/common/http';
+// import {Headers} from '@angular/http';
+import 'rxjs/add/operator/map';
 
 const BASEURL = "http://localhost:3000/api/auth";
 
@@ -10,58 +12,70 @@ const BASEURL = "http://localhost:3000/api/auth";
 export class AuthService {
 
   private user:object;
-  private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
   private options = {withCredentials:true};
 
-  constructor(private http: Http) {
-    this.isLoggedIn().subscribe();
+  constructor(private http: Http) {}
+
+  public getUser() {
+    let promise = new Promise((resolve, reject) => {
+      const token = localStorage.getItem('auth_token');
+      if (!token) {
+        reject();
+      }
+
+      const headers: Headers = new Headers();
+      headers.append('Authorization', token);
+      const requestOptions: RequestOptions = new RequestOptions();
+      requestOptions.headers = headers;
+
+      if (this.user == null) {
+        this.http.get(`${BASEURL}/me`, requestOptions)
+        .map(res => res.json())
+        .subscribe(
+          data => {
+            console.log('[auth service] /me:', data.user);
+            resolve(data.user);
+          },
+          error => reject(error)
+        );
+      } else {
+        resolve(this.user);
+      }
+    });
+    return promise;
   }
 
-    public getLoginEventEmitter():EventEmitter<any>{
-      return this.userLoginEvent;
-    }
+  private handleError(e) {
+    return Observable.throw(e.json());
+  }
 
-    public getUser(){
-      return this.user;
-    }
+  signup(username,password) {
+    console.log("entro en el signup del servicio")
+    return this.http.post(`${BASEURL}/signup`, {username,password}, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 
-    private emitUserLoginEvent(user){
-      this.user = user;
-      this.userLoginEvent.emit(user);
-      return user;
-    }
+  login(credentials) {
+    const request = this.http.post(`${BASEURL}/login`, credentials)
+      .map(res => res.json());
 
-    private handleError(e) {
-      return Observable.throw(e.json());
-    }
+    request
+      .subscribe(
+        // We're assuming the response will be an object
+        // with the JWT on an id_token key
+        data => {
+          localStorage.setItem('auth_token', data.token);
+          this.user = data.user;
+        },
+        error => console.log(error)
+      );
 
-    signup(username,password) {
-      console.log("entro en el signup del servicio")
-      return this.http.post(`${BASEURL}/signup`, {username,password}, this.options)
-        .map(res => res.json())
-        .map(user => this.emitUserLoginEvent(user))
-        .catch(this.handleError);
-    }
+    return request;
+  }
 
-    login(username,password) {
-      console.log(username, password)
-      return this.http.post(`${BASEURL}/login`, {username, password}, this.options)
-        .map(res => res.json())
-        .map(user => this.emitUserLoginEvent(user))
-        .catch(this.handleError);
-    }
-
-    logout() {
-      return this.http.get(`${BASEURL}/logout`, this.options)
-        .map(res => res.json())
-        .map(user => this.emitUserLoginEvent(null))
-        .catch(this.handleError);
-    }
-
-    isLoggedIn() {
-      return this.http.get(`${BASEURL}/loggedin`, this.options)
-        .map(res => res.json())
-        .map(user => this.emitUserLoginEvent(user))
-        .catch(this.handleError);
-    }
+  logout() {
+    localStorage.removeItem('auth_token');
+    this.user = null;
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from "../../services/dashboard.service";
+import { CardsService } from "../../services/cards.service";
 import { FileUploader } from "ng2-file-upload";
 
 @Component({

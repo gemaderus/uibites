@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from "../../services/dashboard.service";
+import { CardsService } from "../../services/cards.service";
 // import { Router } from '@angular/router';
 // import {Observable} from 'rxjs/Observable';
 
@@ -12,11 +12,11 @@ import { DashboardService } from "../../services/dashboard.service";
 export class DashboardComponent implements OnInit {
   cards:any = [];
 
-  constructor(public dashboardService: DashboardService) {
+  constructor(public cardsService: CardsService) {
   }
 
   ngOnInit() {
-    this.dashboardService.getList()
+    this.cardsService.getList()
     .map(dashboard => {this.cards = dashboard; console.log(this.cards);})
     .subscribe();
 

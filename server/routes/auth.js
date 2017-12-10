@@ -6,17 +6,8 @@ const jwt = require('jsonwebtoken');
 // Our user model
 const User  = require('../models/User');
 const config = require('../config/main');
-
+const middleware = require('../config/middleware')
 const authRoutes = express.Router();
-
-// const {
-//   ensureLoggedIn,
-//   ensureLoggedOut
-// } = require('connect-ensure-login');
-
-// Middleware to require login/auth
-const requireAuth = passport.authenticate('jwt', { session: false });
-const requireLogin = passport.authenticate('local', { session: false });
 
 function generateToken(user) {
   return jwt.sign(user, config.secret, {
@@ -81,7 +72,7 @@ authRoutes.post('/signup', (req, res, next) => {
   });
 });
 
-authRoutes.post('/login', requireLogin, (req, res, next) => {
+authRoutes.post('/login', middleware.requireLogin, (req, res, next) => {
   const {username, name, email, bio} = req.user;
 
   const userInfo = {
@@ -95,44 +86,21 @@ authRoutes.post('/login', requireLogin, (req, res, next) => {
     token: `bearer ${generateToken(userInfo)}`,
     user: userInfo
   });
-
-  // passport.authenticate('local', (err, theUser, failureDetails) => {
-  //   console.log("llego aqui");
-
-  //   if (err) {
-  //     res.status(500).json({ message: 'Something went wrong' });
-  //     return;
-  //   }
-
-  //   if (!theUser) {
-  //     res.status(401).json(failureDetails);
-  //     return;
-  //   }
-
-  //   req.login(theUser, (err) => {
-  //     if (err) {
-  //       res.status(500).json({ message: 'Something went wrong' });
-  //       return;
-  //     }
-  //     // We are now logged in (notice req.user)
-  //     res.status(200).json(req.user);
-  //   });
-  // })(req, res, next);
 });
 
-// authRoutes.get('/logout',(req, res, next) => {
-//   console.log("entrando");
-//   req.logout();
-//   res.status(200).json({ message: 'Success' });
-// });
+authRoutes.get('/me', middleware.requireAuth, (req, res, next) => {
+  const {username, name, email, bio} = req.user;
 
-// authRoutes.get('/loggedin', (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     res.status(200).json(req.user);
-//     return;
-//   }
+  const userInfo = {
+    username,
+    name,
+    email,
+    bio
+  };
 
-//   res.status(403).json({ message: 'Unauthorized' });
-// });
+  res.status(200).json({
+    user: userInfo
+  });
+});
 
 module.exports = authRoutes;

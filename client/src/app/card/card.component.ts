@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from "../../services/dashboard.service";
+import { CardsService } from "../../services/cards.service";
 import { AuthService } from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -18,17 +18,17 @@ export class CardComponent implements OnInit {
     likes: 0
 }
 
-  constructor(public dashboardService: DashboardService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
+  constructor(public cardsService: CardsService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.dashboardService.getEditCardByID(params['id'])
+      this.cardsService.getEditCardByID(params['id'])
         .subscribe(card => this.card = card);
     })
   }
 
   deleteCard(id){
-    this.dashboardService.deleteCard(id).subscribe(() =>{
+    this.cardsService.deleteCard(id).subscribe(() =>{
     this.router.navigate(['/dashboard', '/mydashboard']);
   });
 }

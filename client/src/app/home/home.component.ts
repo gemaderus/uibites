@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from "../../services/dashboard.service";
+import { CardsService } from "../../services/cards.service";
+import { AuthService } from "../../services/auth.service";
+
+// 1. Miro si hay tocken
+// 2. Si hay token, pinto component Home
+// 3. Si no hay token, pinto componente Landing
 
 @Component({
   selector: 'app-home',
@@ -9,7 +14,8 @@ import { DashboardService } from "../../services/dashboard.service";
 export class HomeComponent implements OnInit {
 
   cards:any = [];
-  constructor(public dashboardService: DashboardService) {
+  user;
+  constructor(public cardsService: CardsService, public authService: AuthService) {
     this.start()
   }
 
@@ -17,7 +23,18 @@ export class HomeComponent implements OnInit {
   }
 
   start() {
-    this.dashboardService.getList()
-    .subscribe(dashboard => {this.cards = dashboard; console.log(this.cards);});
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      this.authService.getUser()
+        .then(user => {
+          this.user = user;
+        });
+
+      this.cardsService.getList()
+      .subscribe(cards => {
+        this.cards = cards;
+        console.log(this.cards);
+      });
+    }
   }
 }

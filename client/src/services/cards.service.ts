@@ -1,32 +1,31 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
-
 const BASE_DOMAIN = 'http://localhost:3000';
 const BASE_URL = `${BASE_DOMAIN}/api`;
 
-
-
-
-
 @Injectable()
-export class DashboardService {
+export class CardsService {
   card:any;
-
-  private options = {withCredentials:true};
 
   constructor(private http: Http) {}
 
   getList(): Observable<any> {
-    return this.http.get(`${BASE_URL}/dashboard`,this.options)
+    const token = localStorage.getItem('auth_token');
+    const headers: Headers = new Headers();
+    headers.append('Authorization', token);
+    const requestOptions: RequestOptions = new RequestOptions();
+    requestOptions.headers = headers;
+
+    return this.http.get(`${BASE_URL}/dashboard/cards`, requestOptions)
       .map(res => res.json());
   }
 
   getListCardUser(): Observable<any> {
-    return this.http.get(`${BASE_URL}/dashboard/mydashboard`,this.options)
+    return this.http.get(`${BASE_URL}/dashboard/mydashboard`)
       .map(res => res.json());
   }
 
@@ -41,7 +40,7 @@ export class DashboardService {
   }
 
   editCard(id, card) {
-   return this.http.put(`${BASE_URL}/dashboard/edit-card/${id}`,card, this.options)
+   return this.http.put(`${BASE_URL}/dashboard/edit-card/${id}`,card)
     .map((res) => res.json());
  }
 
