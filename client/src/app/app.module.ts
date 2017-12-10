@@ -23,6 +23,7 @@ import { NewCardComponent } from './new-card/new-card.component';
 import { FilterPipe } from './filter.pipe';
 
 import { FileSelectDirective } from "ng2-file-upload";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FileSelectDirective } from "ng2-file-upload";
     EditCardComponent,
     NewCardComponent,
     FilterPipe,
-    FileSelectDirective
+    FileSelectDirective,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

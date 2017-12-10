@@ -1,21 +1,28 @@
-<header>
+<header class="header">
   <nav>
-    <ul>
-      <li>
-        <a [routerLink]="['']">logo</a>
-      </li>
-      <li>
-        <div *ngIf="user">
-          <h2>Welcome {{user.username}}</h2>
-          <a [routerLink]="['']" (click)="logout()">Logout</a>
-          <a [routerLink]="['/card', 'new']" class="btn btn-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+    <ul class="navbar container">
+      <li class="navbar-logo">
+        <h2>
+          <a [routerLink]="['']" class="logo">
+            <span class="font-pink">UI</span><span class="font-light">Bites</span>
           </a>
-          <div>
-            <label for="cards_title"> Search thing: </label>
-            <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern">
-          </div>
+        </h2>
+      </li>
+      <li *ngIf="!user">
+        <a href="#" class="fs-sm font-pink">Sign in
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
+        </a>
+      </li>
+      <li *ngIf="user" class="navbar-user">
+        <div class="search-card-holder">
+          <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern" class="search-card fs-md" placeholder="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F1F1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
         </div>
+        <a class="btn-upload-card" [routerLink]="['/card', 'new']">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24" fill="none" stroke="#F1F1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+        </a>
+        <img src="" alt="" class="avatar"> {{user.file}}
+        <a [routerLink]="['']" (click)="logout()" class="logout fs-sm font-pink">Logout</a>
       </li>
     </ul>
   </nav>

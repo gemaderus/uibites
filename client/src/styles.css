@@ -21,14 +21,77 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-img {
-  max-width: 300px;
+h1, h2, h3, h4 {
+  font-weight: 900;
+  margin: 0;
 }
+
+h1 {
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 3.6rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+}
+
+/*img {
+  max-width: 300px;
+}*/
 
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.container {
+  max-width: 1190px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.font-pink {
+  color: #FF6AC1;
+}
+
+.font-light {
+  color: #F1F1F0;
+}
+
+.fs-xs {
+  font-size: 1.4rem;
+}
+
+.fs-sm {
+  font-size: 1.8rem;
+}
+
+.fs-md {
+  font-size: 2.4rem;
+}
+
+.fs-lg {
+  font-size: 2.8rem;
+}
+
+.feather-arrow-right {
+  vertical-align: middle;
 }
 
 .btn {

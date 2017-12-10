@@ -1,0 +1,32 @@
+.footer {
+  background-color: #3123AE;
+  padding: 7rem 0;
+  font-size: 1.8rem;
+}
+
+.footer-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-terms {
+  display: flex;
+}
+
+.footer-terms li {
+  margin-right: 3.6rem;
+}
+
+.footer-terms a {
+  color: #F1F1F0;
+  text-decoration: none;
+}
+
+.footer-terms a:hover {
+  text-decoration: underline;
+}
+
+.sign {
+  color: #56C7FF;
+}

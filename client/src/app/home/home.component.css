@@ -8,7 +8,92 @@ ul {
   padding: 0;
 }
 
+h1 {
+  color: #3123AE;
+  margin-bottom: 6rem;
+}
+
 .cards-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.home-intro {
+  max-width: 850px;
+  font-size: 4.8rem;
+  padding: 8rem 0;
+  line-height: 5.6rem;
+}
+
+.home-intro a {
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.home-intro a:hover {
+  text-decoration: underline;
+}
+
+.home-cards {
+  background-image: url(/public/images/background-home.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*To change*/
+  background-color: #3023AE;
+  padding-bottom: 5rem;
+}
+
+.home-cards-title {
+  margin-bottom: 8rem;
+  padding-top: 10rem;
+}
+
+.home-bites-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.home-bites-item {
+  margin-bottom: 4rem;
+}
+
+.home-bites {
+  /*To change*/
+  width: 260px;
+  height: 226px;
+  background-color: pink;
+  display: block;
+}
+
+.home-extension {
+  padding: 14rem 0;
+  line-height: 1.2;
+}
+
+.media {
+  font-size: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.media-body {
+  max-width: 550px;
+}
+
+.media-body h2,
+.media-body p {
+  margin-bottom: 4rem;
+}
+
+.extension-logo {
+  font-weight: 900;
+}
+
+.home-extension-image {
+  display: block;
+  width: 500px;
+  height: 436px;
+  background-color: purple;
 }
