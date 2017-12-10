@@ -55,9 +55,14 @@ dashboard.get('/card/:id', middleware.requireAuth, (req, res, next) => {
   let id = req.params.id;
 
   Card.findById(id)
-    // .populate('comments')
-    .then(list => {res.json(list); console.log(list)})
-    .catch(e => res.json(e));
+    .populate('comments')
+    .exec((err, cards) => {
+      if (err) {
+        res.json({error: e});
+      } else {
+        res.json(cards);
+      }
+    });
 });
 
 dashboard.put('/card/:id', middleware.requireAuth, (req, res, next) => {
