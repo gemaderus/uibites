@@ -14,7 +14,9 @@ const cards = [
   description: "soy un big header",
   url: "http://www.allwhitebackground.com/images/3/3813.jpg",
   photo:"http://www.allwhitebackground.com/images/3/3813.jpg",
-  author_id: "5a2824c908d8ec2a9fbc1729"
+  author_id: "5a2c6a85d944ac8a67334668",
+  tags: ["header", "leche", "cookie"],
+  likes: 3
 },
 
 {
@@ -22,7 +24,9 @@ const cards = [
   description: "soy un big footer",
   url: "https://cdn.dribbble.com/users/11867/screenshots/3997796/2.jpg",
   photo:"https://cdn.dribbble.com/users/11867/screenshots/3997796/2.jpg",
-  author_id: "5a2824c908d8ec2a9fbc1729"
+  author_id: "5a2c6a85d944ac8a67334668",
+  tags: ["header", "leche", "cookie"],
+  likes: 3
 },
 
 {
@@ -30,28 +34,36 @@ const cards = [
   description: "soy un design",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  author_id: "5a2824c908d8ec2a9fbc172a"
+  author_id: "5a2c6a85d944ac8a67334668",
+  tags: ["manzana", "leche", "galleta"],
+  likes: 3
 },
 {
   title: "Goldex",
   description: "I'm a credit card",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  author_id: "5a2824c908d8ec2a9fbc172a"
+  author_id: "5a2824c908d8ec2a9fbc172a",
+  tags: ["header", "leche", "cookie"],
+  likes: 3
 },
 {
   title: "Future Light",
   description: "I'm so good",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  author_id: "5a2824c908d8ec2a9fbc172b"
+  author_id: "5a2824c908d8ec2a9fbc172b",
+  tags: ["header", "leche", "cookie"],
+  likes: 3
 },
 {
   title: "Phones",
   description: "I'm a phone",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  author_id: "5a2824c908d8ec2a9fbc172b"
+  author_id: "5a2824c908d8ec2a9fbc172b",
+  tags: ["header", "leche", "cookie"],
+  likes: 3
 },
 {
   title: "Table",

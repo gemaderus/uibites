@@ -15,8 +15,12 @@ const cardSchema = new Schema({
     ref: "User"
   },
   url: String,
-  photo: String
-
+  photo: String,
+  tags: [],
+  likes: Number,
+  comments: [
+    { type: Schema.Types.ObjectId, ref: 'Comment' }
+  ]
 }, {
   timestamps: {
     createdAt: 'created_at',

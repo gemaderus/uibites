@@ -1,29 +1,15 @@
 const express = require('express');
+const middleware = require('../config/middleware');
 const likesRoutes = express.Router();
-const User = require('../models/User');
 const Card = require('../models/Card');
-const Like = require('../models/Like');
 
-const {
-  ensureLoggedIn,
-  ensureLoggedOut
-} = require('connect-ensure-login');
+likesRoutes.put('/card/:id', middleware.requireAuth, (req, res, next) => {
+  const cardId = req.params.id;
 
-likesRoutes.post('/new-like/:id', ensureLoggedIn(), (req, res, next) => {
-    const newLike = {
-      author_id: req.user._id,
-      card_id: req.params.id
-    };
-
-   const theLike = new Like(newLike);
-    theLike.save((err) => {
-      if (err) {
-        next(err);
-        return;
-      }
-      res.status(200).json(newLike);
-    });
-  });
+  Card.findByIdAndUpdate(cardId, { $inc: { likes: 1 }}, { new: true })
+    .then(o => res.status(200).json(o))
+    .catch(e => res.status(500).json(e));
+});
 
 
 module.exports = likesRoutes;

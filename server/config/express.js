@@ -1,18 +1,15 @@
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
 const passport   = require('passport');
-// var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+// const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const session  = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const flash = require("connect-flash");
-
-// var app = express();
-
 
 module.exports = (app) => {
 
@@ -22,7 +19,7 @@ module.exports = (app) => {
 
   app.use(logger('dev'));
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
 
@@ -34,9 +31,4 @@ module.exports = (app) => {
 
   app.use(passport.initialize());
   app.use(passport.session());
-  // app.use((req,res,next) => {
-  //   res.locals.title = "UI Bites";
-  //   res.locals.user = req.user;
-  //   next();
-  // });
 }

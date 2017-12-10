@@ -1,42 +1,62 @@
-const express    = require('express');
-const passport   = require('passport');
-const bcrypt     = require('bcrypt');
+const express = require('express');
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // Our user model
 const User  = require('../models/User');
+const config = require('../config/main');
 
 const authRoutes = express.Router();
 
-const {
-  ensureLoggedIn,
-  ensureLoggedOut
-} = require('connect-ensure-login');
+// const {
+//   ensureLoggedIn,
+//   ensureLoggedOut
+// } = require('connect-ensure-login');
 
+// Middleware to require login/auth
+const requireAuth = passport.authenticate('jwt', { session: false });
+const requireLogin = passport.authenticate('local', { session: false });
+
+function generateToken(user) {
+  return jwt.sign(user, config.secret, {
+    expiresIn: 604800 // in seconds
+  });
+}
 
 authRoutes.post('/signup', (req, res, next) => {
-  console.log('llego al signup del back')
   const {username, password, name, email, bio} = req.body;
-  console.log({username, password, name, email});
-  if (!username || !password) {
-    res.status(400).json({ message: 'Provide username and password' });
+
+  const userInfo = {
+    username,
+    name,
+    email,
+    bio
+  };
+
+  console.log('/signup', userInfo);
+
+  if (!username || !password || !email) {
+    res.status(422).json({ error: 'You must enter email, username and password' });
     return;
   }
 
   User.findOne({ username }, '_id')
   .then(user => {
     if (user) {
-      res.status(400).json({ message: 'The username already exists' });
+      res.status(422).json({ error: 'The username already exists' });
       return;
     }
 
-    const salt     = bcrypt.genSaltSync(10);
+    const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
-    console.log('entra');
+
     const theUser = new User({
       name,
       username,
       password: hashPass,
       email,
+      bio
     });
     return theUser.save();
   })
@@ -45,56 +65,74 @@ authRoutes.post('/signup', (req, res, next) => {
     req.login(newUser, (err) => {
       if (err) {
         console.log(err);
-        res.status(500).json({ message: 'Something went wrong' });
+        res.status(500).json({ error: 'Something went wrong' });
         return;
       }
-      res.status(200).json(req.user);
+
+      res.status(201).json({
+        token: `bearer ${generateToken(userInfo)}`,
+        user: userInfo
+      });
     });
   })
   .catch(e => {
       console.log(e)
-      res.status(500).json({ message: 'Something went wrong' });
+      res.status(500).json({ error: 'Something went wrong' });
   });
 });
 
-authRoutes.post('/login',(req, res, next) => {
-  passport.authenticate('local', (err, theUser, failureDetails) => {
-    console.log("llego aqui");
+authRoutes.post('/login', requireLogin, (req, res, next) => {
+  const {username, name, email, bio} = req.user;
 
-    if (err) {
-      res.status(500).json({ message: 'Something went wrong' });
-      return;
-    }
+  const userInfo = {
+    username,
+    name,
+    email,
+    bio
+  };
 
-    if (!theUser) {
-      res.status(401).json(failureDetails);
-      return;
-    }
+  res.status(200).json({
+    token: `bearer ${generateToken(userInfo)}`,
+    user: userInfo
+  });
 
-    req.login(theUser, (err) => {
-      if (err) {
-        res.status(500).json({ message: 'Something went wrong' });
-        return;
-      }
-      // We are now logged in (notice req.user)
-      res.status(200).json(req.user);
-    });
-  })(req, res, next);
+  // passport.authenticate('local', (err, theUser, failureDetails) => {
+  //   console.log("llego aqui");
+
+  //   if (err) {
+  //     res.status(500).json({ message: 'Something went wrong' });
+  //     return;
+  //   }
+
+  //   if (!theUser) {
+  //     res.status(401).json(failureDetails);
+  //     return;
+  //   }
+
+  //   req.login(theUser, (err) => {
+  //     if (err) {
+  //       res.status(500).json({ message: 'Something went wrong' });
+  //       return;
+  //     }
+  //     // We are now logged in (notice req.user)
+  //     res.status(200).json(req.user);
+  //   });
+  // })(req, res, next);
 });
 
-authRoutes.get('/logout',(req, res, next) => {
-  console.log("entrando");
-  req.logout();
-  res.status(200).json({ message: 'Success' });
-});
+// authRoutes.get('/logout',(req, res, next) => {
+//   console.log("entrando");
+//   req.logout();
+//   res.status(200).json({ message: 'Success' });
+// });
 
-authRoutes.get('/loggedin', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.status(200).json(req.user);
-    return;
-  }
+// authRoutes.get('/loggedin', (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     res.status(200).json(req.user);
+//     return;
+//   }
 
-  res.status(403).json({ message: 'Unauthorized' });
-});
+//   res.status(403).json({ message: 'Unauthorized' });
+// });
 
 module.exports = authRoutes;
