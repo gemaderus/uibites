@@ -3,36 +3,38 @@
   <h1> {{ card.title }}</h1>
   <p>{{ card.description }}</p>
   <p>{{ card.url }}</p>
-  <button (click)="deleteCard(card._id) ">Delete</button>
-  <a [routerLink]="[ '../../edit-card', card._id] ">Edit</a>
+  <p>{{ card.tags.join(', ') }}</p>
+
+  <ul>
+    <li *ngFor="let comment of card.comments">
+      {{ comment }}
+    </li>
+  </ul>
+
+  <div *ngIf="user">
+    <button (click)="deleteCard(card._id) ">Delete</button>
+    <a [routerLink]="['edit'] ">Edit</a>
+  </div>
   <div>
-    <button class="btn btn-icon" (click)="likeAdd(count)">
+    <button class="btn btn-icon" (click)="addLike(card._id)">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
     </button>
     <div ng-repeat="count in newLikes">
       <span>
         <span class="likes-number" id="like">
-          {{count.likes}}
+          {{card.likes}}
         </span> likes
       </span>
     </div>
   </div>
-  <div>
-    <h2>Deja tu comentarios</h2>
-    <input type="text">
-    <button (click)="addComments(newComment)">Deja tu comentario</button>
-  </div>
-  <!-- <div>
-    <h2>Deja tu comentarios</h2>
-    <textarea name="" id="" cols="30" rows="10" [(ngModel)]="newComment.content"></textarea>
-    <button (click)="addComments(newComment)">Enviar comentario</button>
-  </div> -->
-</div>
 
-<!-- <div>
-  <ul>
-    <li *ngFor="let e of comments, let i = index">
-      <p>{{ e.content }}</p>
-    </li>
-  </ul>
-</div> -->
+  <div *ngIf="user; else elseBlock">
+    <h2>Deja tu comentarios</h2>
+    <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment"></textarea>
+    <button (click)="saveComment(card._id, comment.body)">Deja tu comentario</button>
+  </div>
+
+  <ng-template #elseBlock>
+    <a href="/login">Log in to comment</a>
+  </ng-template>
+</div>

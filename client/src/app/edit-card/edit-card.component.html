@@ -1,36 +1,21 @@
 <h1>Edit Card</h1>
-<!-- <div *ngIf="!auth.user"> -->
-<form>
+
+<form *ngIf="card">
   <div>
     <label>Title</label>
-    <input type="text" [(ngModel)]="formInfo.title" name="title" />
+    <input type="text" [(ngModel)]="card.title" name="title" />
   </div>
   <div>
     <label>Description</label>
-    <input type="text" [(ngModel)]="formInfo.description" name="description" />
+    <input type="text" [(ngModel)]="card.description" name="description" />
   </div>
   <div>
     <label>Url</label>
-    <input type="text" [(ngModel)]="formInfo.url" name="url" />
+    <input type="text" [(ngModel)]="card.url" name="url" />
+  </div>
+  <div>
+    <label for="">Tags</label>
+    <input type="text" [(ngModel)]="card.tags" name="tags">
   </div>
   <button (click)="editCard()">Save</button>
 </form>
-<!-- </div> -->
-<!-- <p class="error"> {{ error }} </p> -->
-<!-- </div> -->
-<!-- <form (ngSubmit)="editCard(formInfo)" #formInfo="ngForm">
-  <div>
-    <label>Title</label>
-    <input type="text" [(ngModel)]="title" #myTitle="ngModel" name="title" />
-  </div>
-  <div>
-    <label>Description</label>
-    <input type="text" [(ngModel)]="description" name="description" #myDescription="ngModel" />
-  </div>
-  <div>
-    <label>Url</label>
-    <input type="text" [(ngModel)]="url" #myUrl="ngModel" name="url" />
-  </div>
-  <button type="submit">Save</button>
-  <!-- <button (click)="signup(username,password)"> signup </button> -->
-<!-- </form> -->

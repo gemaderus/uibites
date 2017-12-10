@@ -10,60 +10,26 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EditCardComponent implements OnInit {
   card;
-  formInfo = {
-    title: '',
-    description: '',
-    url: '',
-  };
-
-  error: string;
 
   constructor(public cardsService: CardsService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.cardsService.getEditCardByID(params['id'])
+      this.cardsService.getCardByID(params['id'])
         .subscribe(card => this.card = card);
     })
   }
 
-//   editCard(){
-//     console.log(this.card);
-//
-//     this.dashboardService.editCard(this.card._id, this.formInfo)
-//         .subscribe(card => this.card = card);
-//         console.log(this.card);
-//         this.router.navigate(['/'])
-//   }
-// }
-//
-//
+  editCard() {
+    const id = this.card._id;
+    const data = {
+      ...this.card,
+      tags: Array.isArray(this.card.tags) ? this.card.tags : this.card.tags.split(',').map((tag) => tag.trim())
+    }
 
-editCard(){
-    this.route.params.subscribe(params => {
-      this.cardsService.editCard(params['id'], this.formInfo)
-      .subscribe(card => this.card = card);
-        this.router.navigate(['/dashboard', 'card', params['id']])
+    this.cardsService.editCard(id, data)
+    .subscribe(card => {
+      this.router.navigate(['/card', id])
     });
-
-
-  // errorCb(err) {
-  //   this.error = err;
-  //   this.card = null;
-  // }
-  //
-  // successCb(card) {
-  //   this.card = card;
-  //   this.error = null;
-  // }
-
+  }
 }
-}
-// addguest(plate){
-//    console.log(this.plate.guests)
-//    this.plateService.addGuest(this.plate._id, {guests: this.plate.guests + 1})
-//        .subscribe(
-//          plate => this.plate = plate
-//        )
-//    this.router.navigate(['/plates/' + this.plate.location])
-//  }

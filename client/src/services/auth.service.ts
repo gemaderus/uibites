@@ -14,7 +14,9 @@ export class AuthService {
   private user:object;
   private options = {withCredentials:true};
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+    console.log('authService');
+  }
 
   public getUser() {
     let promise = new Promise((resolve, reject) => {
@@ -33,7 +35,7 @@ export class AuthService {
         .map(res => res.json())
         .subscribe(
           data => {
-            console.log('[auth service] /me:', data.user);
+            this.user = data.user;
             resolve(data.user);
           },
           error => reject(error)
@@ -49,11 +51,21 @@ export class AuthService {
     return Observable.throw(e.json());
   }
 
-  signup(username,password) {
+  signup(username,password, name, email, bio) {
     console.log("entro en el signup del servicio")
-    return this.http.post(`${BASEURL}/signup`, {username,password}, this.options)
-      .map(res => res.json())
-      .catch(this.handleError);
+    const request =   this.http.post(`${BASEURL}/signup`, {username,password, name, email, bio})
+      .map(res => res.json());
+    request
+      .subscribe(
+          // We're assuming the response will be an object
+          // with the JWT on an id_token key
+        data => {
+          localStorage.setItem('auth_token', data.token);
+          this.user = data.user;
+        },
+        error => console.log(error)
+      );
+    return request;
   }
 
   login(credentials) {

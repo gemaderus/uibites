@@ -9,19 +9,23 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent implements OnInit {
   card;
   user;
-  constructor(public auth: AuthService) {
 
+  constructor(public authService: AuthService) {
+    this.start();
   }
 
   ngOnInit() {
-  //   this.user = this.auth.getUser();
-  //   this.auth.getLoginEventEmitter()
-  //     .subscribe(user => this.user = user);
-  // }
-  //
-  // logout() {
-  //   this.auth.logout().subscribe();
-  // }
-}
+  }
+
+  start() {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      this.authService.getUser()
+        .then(user => {
+          this.user = user;
+        });
+    }
+  }
+
 
 }

@@ -13,9 +13,12 @@
     <input type="text" [(ngModel)]="newCard.url" name="url" />
   </div>
   <div>
+    <label>Tags</label>
+    <input type="text" [(ngModel)]="newCard.tags" name="tags" />
+  </div>
+  <div>
     <label>Image</label>
     <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
   </div>
   <button (click)="submit()">Upload</button>
-  <!-- <button (click)="signup(username,password)"> signup </button> -->
 </form>

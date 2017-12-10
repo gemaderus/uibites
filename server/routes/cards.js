@@ -49,7 +49,7 @@ dashboard.post('/cards', middleware.requireAuth, upload.single('file'), (req, re
   });
 });
 
-dashboard.get('/card/:id', middleware.requireAuth, (req, res, next) => {
+dashboard.get('/card/:id', (req, res, next) => {
   console.log(`[GET] /card/${req.params.id}`, req.body);
 
   let id = req.params.id;
@@ -58,7 +58,7 @@ dashboard.get('/card/:id', middleware.requireAuth, (req, res, next) => {
     .populate('comments')
     .exec((err, cards) => {
       if (err) {
-        res.json({error: e});
+        res.json({error: err});
       } else {
         res.json(cards);
       }

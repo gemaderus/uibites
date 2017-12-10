@@ -41,9 +41,10 @@ export const routes: Routes = [
 
     { path: 'login',  component: LoginComponent },
     { path: 'signup',  component: SignupComponent },
+    { path: 'card/new', component: NewCardComponent, pathMatch: 'full' },
     { path: 'card/:id', component: CardComponent },
     { path: 'card/:id/edit', component: EditCardComponent },
-    { path: 'card/new', component: NewCardComponent },
+
     { path: 'user/:id', component: ProfileComponent },
     { path: 'user/edit', component: EditProfileComponent },
     //{ path: 'search/:tag', component: SearchComponent },

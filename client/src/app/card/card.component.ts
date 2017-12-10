@@ -9,40 +9,45 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-
+  user;
   card;
-  // comments: Object[];
-  // newComments: Object = {};
-  //newComment: Object = {};
-  newLikes = {
-    likes: 0
-}
+  comment = {
+    body: ''
+  };
 
-  constructor(public cardsService: CardsService, public auth:AuthService, public route:ActivatedRoute, public router:Router) { }
+  constructor(public cardsService: CardsService, public authService:AuthService, public route:ActivatedRoute, public router:Router) { }
 
-  ngOnInit() {
+  ngOnInit () {
     this.route.params.subscribe(params => {
-      this.cardsService.getEditCardByID(params['id'])
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        this.authService.getUser()
+          .then(user => {
+            this.user = user;
+          });
+      }
+
+      this.cardsService.getCardByID(params['id'])
         .subscribe(card => this.card = card);
     })
   }
 
-  deleteCard(id){
+  deleteCard (id) {
     this.cardsService.deleteCard(id).subscribe(() =>{
-    this.router.navigate(['/dashboard', '/mydashboard']);
-  });
-}
-
-likeAdd($scope) {
-  $scope.newLikes = this.newLikes;
-  $scope.incrementLikes = function(count){
-    count.likes++;
+      this.router.navigate(['/cards']);
+    });
   }
-  //document.getElementById("like").innerHTML(count);
-}
-  // addComments(){
-  //   console.log("Add contact has been called");
-  //   this.comments.push(this.newComments);
-  //   this.newComments = {}
-  // };
+
+  saveComment (id, comment) {
+    this.cardsService.saveComment(id, comment).subscribe(() => {
+      this.comment.body = '';
+      this.router.navigate(['/card', id]);
+    });
+  }
+
+  addLike (id) {
+    this.cardsService.doLike(id).subscribe(() => {
+      this.card.likes++;
+    });
+  }
 }

@@ -1,28 +1,22 @@
-<ul>
-  <li>
-    <a [routerLink]="['']">logo</a>
-  </li>
-  <li>
-    <a [routerLink]="['login']">Login</a>
-  </li>
-  <li>Hi</li>
-  <li>
-    <a [routerLink]="['']" (click)="logout()">Logout</a>
-  </li>
-  <li>
-    <div *ngIf="user">
-      <h2>Welcome {{auth.user.username}}</h2>
-      <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
-      <a [routerLink]="['profile', auth.user._id]">My profile</a>
-      <a [routerLink]="['profile', 'edit-profile', auth.user._id]">Edit profile</a>
-      <a [routerLink]="['dashboard', 'mydashboard']">My dashboard</a>
-      <a [routerLink]="['dashboard', 'new-card']" class="btn btn-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
-      </a>
-      <div>
-        <label for="cards_title"> Search thing: </label>
-        <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern">
-      </div>
-    </div>
-  </li>
-</ul>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="['']">logo</a>
+      </li>
+      <li>
+        <div *ngIf="user">
+          <h2>Welcome {{user.username}}</h2>
+          <a [routerLink]="['']" (click)="logout()">Logout</a>
+          <a [routerLink]="['/card', 'new']" class="btn btn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+          </a>
+          <div>
+            <label for="cards_title"> Search thing: </label>
+            <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>

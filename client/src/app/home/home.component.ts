@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   cards:any = [];
   user;
   constructor(public cardsService: CardsService, public authService: AuthService) {
-    this.start()
+    this.start();
   }
 
   ngOnInit() {

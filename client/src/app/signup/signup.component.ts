@@ -13,13 +13,19 @@ export class SignupComponent implements OnInit {
   constructor(public auth:AuthService, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      this.router.navigate(['']);
+    }
   }
 
-  signup(username, password){
+  signup(username, password, name, email, bio){
     console.log('entro en signup del componente')
-    console.log(username, password)
-    this.auth.signup(username,password).subscribe();
-    this.router.navigate(['/']);
+    console.log(username, password, name, email, bio)
+    this.auth.signup(username,password,name,email, bio).subscribe(
+      (user) => {
+      this.router.navigate(['']);
+    });
   }
 
 }

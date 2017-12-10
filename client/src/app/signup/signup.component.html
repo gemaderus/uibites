@@ -19,11 +19,10 @@
       <input type="email" [(ngModel)]="email" name="email" />
     </div>
     <div>
-      <label>Photo</label>
-      <input type="file" [(ngModel)]="photo" name="photo" />
+      <label>Bio</label>
+      <input type="text" [(ngModel)]="bio" name="bio" />
     </div>
-    <button (click)="login(username,password)"> login </button>
-    <button (click)="signup(username,password)"> signup </button>
+    <button (click)="signup(username,password, email, bio, name)"> signup </button>
   </form>
   <p class="error"> {{ error }} </p>
 </div>
