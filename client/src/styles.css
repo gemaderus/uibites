@@ -305,6 +305,25 @@ a {
   margin-right: 1rem;
 }
 
+.avatar {
+
+  border-radius: 50%;
+}
+
+.avatar-sm {
+  width: 8rem;
+  height: 8rem;
+}
+
+.avatar-lg {
+  width: 16rem;
+  height: 16rem;
+}
+
+.avatar-has-shadow {
+  box-shadow: 0 2px 4px 0 #110B3F;
+}
+
 @media screen and (min-width:768px){
   .form-basic-holder {
     width: 50%;

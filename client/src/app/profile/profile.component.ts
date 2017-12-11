@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
 import { AuthService } from '../../services/auth.service';
+import { CardsService } from '../../services/cards.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -10,11 +11,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user;
+  cards:any = [];
 
   constructor(
     public router:Router,
     public profileService:ProfileService,
     public auth:AuthService,
+    public cardsService:CardsService,
     public route:ActivatedRoute) {
   }
 
@@ -23,6 +26,12 @@ export class ProfileComponent implements OnInit {
       this.profileService.getUserDetail(params['id'])
         .subscribe(user => this.user = user);
     })
+
+    this.cardsService.getList()
+    .subscribe(cards => {
+      this.cards = cards;
+      console.log(this.cards);
+    });
   }
 
 }

@@ -28,13 +28,6 @@
   flex: 3;
 }
 
-.avatar {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 50%;
-  background-color: #fff;
-}
-
 .btn-upload-card {
   cursor: pointer;
 }

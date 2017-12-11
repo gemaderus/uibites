@@ -38,7 +38,7 @@ export class ProfileService {
   getUserDetail(id){
     // console.log(id)
     // console.log("entro en el front");
-    return this.http.get(`${BASE_URL}/profile/${id}`)
+    return this.http.get(`${BASE_URL}/profile/user/${id}`)
                     .map(res => res.json());
   }
 

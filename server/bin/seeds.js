@@ -16,11 +16,11 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 
 const users = [
   {
-    name: 'gema',
-    username: 'gema',
+    name: 'Gema de Rus Carnero',
+    username: 'gemaderus',
     password: encryptedPass,
-    email: 'gema@gmail.com',
-    bio: 'Living the life',
+    email: 'hi@gemaderus.com',
+    bio: 'Living in Málaga. Frontend Developer - Javascript, Node.Js, Express.Js, Mongo DB, Angular, HTML & CSS',
   },
   {
     name: 'manu',
