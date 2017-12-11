@@ -1,24 +1,44 @@
-<h1>New Card</h1>
-<form>
-  <div>
-    <label>Title</label>
-    <input type="text" [(ngModel)]="newCard.title" name="title" />
+<div class="form-container">
+  <div class="form-welcome text-center">
+    <h3 class="uppercase font-light">Upload to <span class="font-pink">UI</span><span class="font-light">Bites</span></h3>
+    <p class="font-light fs-md">Grab your image and fill the details</p>
   </div>
-  <div>
-    <label>Description</label>
-    <input type="text" [(ngModel)]="newCard.description" name="description" />
+  <div class="form-basic-holder">
+    <div class="form-basic-action">
+      <button class="btn btn-icon font-pink">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="form-basic-container">
+      <form class="form-basic">
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Title</label>
+          <input type="text" [(ngModel)]="newCard.title" name="title" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Description</label>
+          <input type="text" [(ngModel)]="newCard.description" name="description" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">url</label>
+          <input type="text" [(ngModel)]="newCard.url" name="url" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Tags</label>
+          <input type="text" [(ngModel)]="newCard.tags" name="tags" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Image</label>
+          <div class="input-file-holder">
+            <label for="file-input" class="label-file">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image input-file-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </label>
+            <input type="file" id="file-input" name="file" ng2FileSelect [uploader]="uploader" class="custom-file-input" />
+          </div>
+
+        </div>
+        <button (click)="submit()" class="btn btn-base btn-pink full">Upload</button>
+      </form>
+    </div>
   </div>
-  <div>
-    <label>url</label>
-    <input type="text" [(ngModel)]="newCard.url" name="url" />
-  </div>
-  <div>
-    <label>Tags</label>
-    <input type="text" [(ngModel)]="newCard.tags" name="tags" />
-  </div>
-  <div>
-    <label>Image</label>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
-  </div>
-  <button (click)="submit()">Upload</button>
-</form>
+</div>

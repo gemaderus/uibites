@@ -188,9 +188,55 @@ p {
   margin-bottom: 1.6rem;
 }
 
+.form-basic .label-file {
+  display: inline-block;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
 .form-basic .form-group {
   margin-bottom: 3rem;
 }
+
+/*Custom input file*/
+.input-file-holder {
+  display: flex;
+  align-items: center;
+}
+
+.custom-file-input:active,
+.custom-file-input:focus {
+  outline: none;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  display: none;
+}
+
+.custom-file-input::before {
+  content: 'Select an image file';
+  display: inline-block;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+.form-basic .custom-file-input {
+  display: inline-block;
+}
+
+.input-file-image {
+  display: block;
+  margin-right: 5px;
+}
+/*.custom-file-input:hover::before {
+  border-color: black;
+}*/
+/*.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+} */
 
 .feather-arrow-right {
   vertical-align: middle;
@@ -200,10 +246,6 @@ p {
 @media screen and (min-width:768px){
   .form-basic-holder {
     width: 50%;
-  }
-
-  .form-basic-container {
-    height: 100vh;
   }
 
   .form-welcome {
