@@ -1,5 +1,5 @@
-<div *ngIf="user; else elseBlock">
-  Soy {{ user.name}}
+<div *ngIf="authService.user; else elseBlock">
+  Soy {{ authService.user.name}}
   <ul class="cards-list">
     <li *ngFor="let card of cards">
       <img src="http://localhost:3000/{{card.photo}}" alt="">

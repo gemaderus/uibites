@@ -8,24 +8,27 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   card;
-  user;
 
   constructor(public authService: AuthService) {
-    this.start();
+    // this.start();
   }
 
   ngOnInit() {
   }
 
-  start() {
-    const token = localStorage.getItem('auth_token');
-    if (token) {
-      this.authService.getUser()
-        .then(user => {
-          this.user = user;
-        });
-    }
+  logout() {
+    this.authService.logout();
   }
+
+  // start() {
+  //   const token = localStorage.getItem('auth_token');
+  //   if (token) {
+  //     this.authService.getUser()
+  //       .then(user => {
+  //         this.user = user;
+  //       });
+  //   }
+  // }
 
 
 }
