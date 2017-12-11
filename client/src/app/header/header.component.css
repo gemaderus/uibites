@@ -33,12 +33,10 @@
   height: 8rem;
   border-radius: 50%;
   background-color: #fff;
-  margin-right: 4rem;
 }
 
 .search-card-holder {
   flex: 1;
-  margin-right: 2rem;
   position: relative;
 }
 
@@ -77,9 +75,22 @@
 
 .btn-upload-card {
   cursor: pointer;
-  margin-right: 4rem;
 }
 
 .logout {
   text-decoration: none;
+}
+
+@media screen and (min-width:768px){
+  .avatar {
+    margin-right: 4rem;
+  }
+
+  .search-card-holder {
+    margin-right: 2rem;
+  }
+
+  .btn-upload-card {
+    margin-right: 4rem;
+  }
 }

@@ -36,26 +36,32 @@ h1 {
 }
 
 .home-cards-title {
-  margin-bottom: 8rem;
-  padding-top: 28rem;
+  margin-bottom: 6rem;
+  padding-top: 20rem;
 }
 
 .home-bites-list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
 }
 
 .home-bites-item {
   margin-bottom: 4rem;
+  width: 100%;
+  max-width: 260px;
 }
 
 .home-bites {
   /*To change*/
-  width: 260px;
-  height: 226px;
+  /*width: 260px;
+  height: 226px;*/
   background-color: pink;
   display: block;
+  max-width: 100%;
+  width: 100%;
 }
 
 .home-extension {
@@ -65,9 +71,6 @@ h1 {
 
 .media {
   font-size: 2.4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .media-body {
@@ -85,7 +88,38 @@ h1 {
 
 .home-extension-image {
   display: block;
-  width: 500px;
-  height: 436px;
-  background-color: purple;
+  /*height: 436px;*/
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width:768px){
+  .home-bites-list {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .home-bites-item {
+    margin-bottom: 4rem;
+    width: auto;
+  }
+  .home-bites {
+    width: 260px;
+    height: 226px;
+  }
+
+  .home-cards-title {
+    margin-bottom: 8rem;
+    padding-top: 28rem;
+  }
+
+  .media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .home-extension-image {
+    margin-bottom: 0;
+  }
 }

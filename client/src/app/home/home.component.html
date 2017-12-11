@@ -1,10 +1,15 @@
 <div *ngIf="authService.user; else elseBlock">
   Soy {{ authService.user.name}}
+  <div class="search-card-holder">
+    <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern" class="search-card fs-md" placeholder="Search">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F1F1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+  </div>
   <ul class="cards-list">
-    <li *ngFor="let card of cards">
+    <li *ngFor="let card of cards | filter:'title':pattern;">
       <img src="http://localhost:3000/{{card.photo}}" alt="">
       <h1> {{ card.title }}</h1>
       <p>{{ card.description }}</p>
+      <p>{{ card.tags.join(', ') }}</p>
       <a [routerLink]="['/card', card._id]"> View Details </a>
     </li>
   </ul>
@@ -57,7 +62,7 @@
     <div class="container">
       <div class="media">
         <div>
-          <img src="http://localhost:3000/images/home-extension.png" alt="" class="home-extension">
+          <img src="http://localhost:3000/images/home-extension.png" alt="" class="home-extension-image">
         </div>
         <div class="media-body">
           <h2>Start collecting.</h2>

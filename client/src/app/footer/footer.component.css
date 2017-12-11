@@ -1,21 +1,16 @@
 .footer {
   background-color: #3123AE;
-  padding: 7rem 0;
+  padding: 3rem 0;
   font-size: 1.8rem;
-}
-
-.footer-holder {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 }
 
 .footer-terms {
-  display: flex;
+  margin-bottom: 2rem;
 }
 
 .footer-terms li {
-  margin-right: 3.6rem;
+  margin-bottom: 1rem;
 }
 
 .footer-terms a {
@@ -29,4 +24,26 @@
 
 .sign {
   color: #56C7FF;
+}
+
+@media screen and (min-width:768px){
+  .footer {
+    text-align: left;
+    padding: 7rem 0;
+  }
+
+  .footer-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-terms {
+    display: flex;
+  }
+
+  .footer-terms li {
+    margin-right: 3.6rem;
+    margin-bottom: 0;
+  }
 }
