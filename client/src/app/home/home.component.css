@@ -72,7 +72,8 @@ h1 {
 /*User home*/
 
 .container-profile {
-  padding: 4rem 0;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .search-card-holder {
