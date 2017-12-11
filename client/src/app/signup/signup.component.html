@@ -1,33 +1,45 @@
-<h1> Authentication Front </h1>
 <div *ngIf="!auth.user">
-  <form>
-    <h2> Login or Signup </h2>
-    <div>
-      <label> Username </label>
-      <input type="text" [(ngModel)]="username" name="username" />
-    </div>
-    <div>
-      <label> Password </label>
-      <input type="password" [(ngModel)]="password" name="password" />
-    </div>
-    <div>
-      <label> Name </label>
-      <input type="text" [(ngModel)]="name" name="name" />
-    </div>
-    <div>
-      <label>Email</label>
-      <input type="email" [(ngModel)]="email" name="email" />
-    </div>
-    <div>
-      <label>Bio</label>
-      <input type="text" [(ngModel)]="bio" name="bio" />
-    </div>
-    <button (click)="signup(username,password, email, bio, name)"> signup </button>
-  </form>
-  <p class="error"> {{ error }} </p>
-</div>
+  <div class="form-container">
 
-<div *ngIf="auth.user">
-  <h2>Welcome {{auth.user.username}}</h2>
-  <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
+    <div class="form-welcome text-center">
+      <h3 class="uppercase font-light">Welcome to <span class="font-pink">UI</span><span class="font-light">Bites</span></h3>
+      <p class="font-light fs-md">The UI’s catalog of ideas</p>
+    </div>
+    <div class="form-basic-holder">
+      <div class="form-basic-action">
+        <span class="uppercase fs-xs align-middle ">Do you have an account?
+          <a class="font-pink" [routerLink]="['/login']"> login
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right align-middle "><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18">
+            </polyline></svg>
+          </a>
+        </span>
+      </div>
+      <div class="form-basic-container form-basic-container-signup">
+        <form class="form-basic">
+          <h3 class="uppercase form-title">Sign in to <span class="font-pink">UI</span>Bites</h3>
+          <div class="form-group">
+            <label class="uppercase fs-xs mb2"> Username </label>
+            <input type="text" [(ngModel)]="username" name="username" class="input-forms full" />
+          </div>
+          <div class="form-group">
+            <label class="uppercase fs-xs mb2"> Password </label>
+            <input type="password" [(ngModel)]="password" name="password" class="input-forms full" />
+          </div>
+          <div class="form-group">
+            <label class="uppercase fs-xs mb2"> Name </label>
+            <input type="text" [(ngModel)]="name" name="name" class="input-forms full" />
+          </div>
+          <div class="form-group">
+            <label class="uppercase fs-xs mb2">Email</label>
+            <input type="email" [(ngModel)]="email" name="email" class="input-forms full" />
+          </div>
+          <div class="form-group">
+            <label class="uppercase fs-xs mb2">Bio</label>
+            <input type="text" [(ngModel)]="bio" name="bio" class="input-forms full" />
+          </div>
+          <button (click)="signup(username,password, email, bio, name)" class="btn btn-base btn-pink full"> signup </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

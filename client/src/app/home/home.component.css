@@ -90,7 +90,7 @@ h1 {
   display: block;
   /*height: 436px;*/
   max-width: 100%;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
 }
 
 @media screen and (min-width:768px){

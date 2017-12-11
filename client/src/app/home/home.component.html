@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div *ngIf="authService.user; else elseBlock">
   Soy {{ authService.user.name}}
   <div class="search-card-holder">
@@ -14,7 +16,6 @@
     </li>
   </ul>
 </div>
-
 <ng-template #elseBlock>
   <div class="container">
     <div class="home-intro">
@@ -79,3 +80,5 @@
     </div>
   </div>
 </ng-template>
+
+<app-footer></app-footer>

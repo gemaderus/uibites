@@ -9,6 +9,12 @@
   margin-bottom: 2rem;
 }
 
+.footer-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .footer-terms li {
   margin-bottom: 1rem;
 }
@@ -32,18 +38,24 @@
     padding: 7rem 0;
   }
 
-  .footer-holder {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .footer-terms {
     display: flex;
   }
 
   .footer-terms li {
     margin-right: 3.6rem;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .footer-holder {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-terms {
     margin-bottom: 0;
   }
 }
