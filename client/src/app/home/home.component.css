@@ -1,7 +1,3 @@
-img {
-  width: 300px;
-}
-
 ul {
   list-style: none;
   margin: 0;
@@ -35,17 +31,13 @@ h1 {
 }
 
 .home-cards {
-  background-image: url(/public/images/background-home.png);
-  background-size: cover;
+  background-image: url(http://localhost:3000/images/background-home.png);
   background-repeat: no-repeat;
-  /*To change*/
-  background-color: #3023AE;
-  padding-bottom: 5rem;
 }
 
 .home-cards-title {
   margin-bottom: 8rem;
-  padding-top: 10rem;
+  padding-top: 28rem;
 }
 
 .home-bites-list {
@@ -67,7 +59,7 @@ h1 {
 }
 
 .home-extension {
-  padding: 14rem 0;
+  padding: 3rem 0;
   line-height: 1.2;
 }
 

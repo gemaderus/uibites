@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CardComponent implements OnInit {
   user;
   card;
+  comentarios:Array<any> = [];
   comment = {
     body: ''
   };
@@ -28,7 +29,10 @@ export class CardComponent implements OnInit {
       }
 
       this.cardsService.getCardByID(params['id'])
-        .subscribe(card => this.card = card);
+        .subscribe(card => {
+          this.card = card;
+          this.comentarios = card.comments
+        });
     })
   }
 
@@ -39,9 +43,9 @@ export class CardComponent implements OnInit {
   }
 
   saveComment (id, comment) {
+    this.comentarios.push({text : comment})
     this.cardsService.saveComment(id, comment).subscribe(() => {
       this.comment.body = '';
-      this.router.navigate(['/card', id]);
     });
   }
 

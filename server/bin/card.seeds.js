@@ -16,7 +16,9 @@ const cards = [
   photo:"http://www.allwhitebackground.com/images/3/3813.jpg",
   author_id: "5a2c6a85d944ac8a67334668",
   tags: ["header", "leche", "cookie"],
-  likes: 3
+  likes: 3,
+  comments: ["5a2e63324b97c0a4122f7cfd"]
+
 },
 
 {
@@ -43,7 +45,7 @@ const cards = [
   description: "I'm a credit card",
   url: "https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
   photo:"https://cdn.dribbble.com/users/257709/screenshots/3998130/shot_x0.5_1x.png",
-  author_id: "5a2824c908d8ec2a9fbc172a",
+  author_id: "5a2c6a85d944ac8a67334668",
   tags: ["header", "leche", "cookie"],
   likes: 3
 },

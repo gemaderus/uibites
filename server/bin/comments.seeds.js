@@ -12,7 +12,7 @@ mongoose.connect(dbURL, {
 const comments = [
   {
     text: "hola que tal",
-    author_id: "5a2c3843e94ca385b212373f",
+    author_id: "5a2c6a85d944ac8a67334668",
     card_id: "5a2c383536dc9285a1a243ec"
   }
 ]
