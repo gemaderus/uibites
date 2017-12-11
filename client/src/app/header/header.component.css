@@ -35,44 +35,6 @@
   background-color: #fff;
 }
 
-.search-card-holder {
-  flex: 1;
-  position: relative;
-}
-
-.search-card {
-  border: 0;
-  border-bottom: 1px solid #F1F1F0;
-  padding: 1rem 0;
-  width: 100%;
-  background-color: #3123AE;
-  color: #fff;
-  outline: none;
-}
-
-.feather-search {
-  position: absolute;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-::-webkit-input-placeholder {
-   color: #F1F1F0;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   color: #F1F1F0;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #F1F1F0;
-}
-
-:-ms-input-placeholder {
-   color: #F1F1F0;
-}
-
 .btn-upload-card {
   cursor: pointer;
 }

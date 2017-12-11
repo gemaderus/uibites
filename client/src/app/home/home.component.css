@@ -40,30 +40,6 @@ h1 {
   padding-top: 20rem;
 }
 
-.home-bites-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-direction: column;
-}
-
-.home-bites-item {
-  margin-bottom: 4rem;
-  width: 100%;
-  max-width: 260px;
-}
-
-.home-bites {
-  /*To change*/
-  /*width: 260px;
-  height: 226px;*/
-  background-color: pink;
-  display: block;
-  max-width: 100%;
-  width: 100%;
-}
-
 .home-extension {
   padding: 3rem 0;
   line-height: 1.2;
@@ -93,21 +69,53 @@ h1 {
   margin: 0 auto 2rem;
 }
 
+/*User home*/
+
+.container-profile {
+  padding: 4rem 0;
+}
+
+.search-card-holder {
+  flex: 1;
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 8rem;
+}
+
+.search-card {
+  border: 0;
+  border-bottom: 1px solid #BD0FE1;
+  padding: 1rem 0;
+  width: 100%;
+  color: #BD0FE1;
+  outline: none;
+}
+
+.feather-search {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+::-webkit-input-placeholder {
+   color: #BD0FE1;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #BD0FE1;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #BD0FE1;
+}
+
+:-ms-input-placeholder {
+   color: #BD0FE1;
+}
+
 @media screen and (min-width:768px){
-  .home-bites-list {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .home-bites-item {
-    margin-bottom: 4rem;
-    width: auto;
-  }
-  .home-bites {
-    width: 260px;
-    height: 226px;
-  }
-
   .home-cards-title {
     margin-bottom: 8rem;
     padding-top: 28rem;
