@@ -1,21 +1,34 @@
-<h1>Edit Card</h1>
-
-<form *ngIf="card">
-  <div>
-    <label>Title</label>
-    <input type="text" [(ngModel)]="card.title" name="title" />
+<div class="form-container">
+  <div class="form-welcome text-center">
+    <h3 class="uppercase font-light">Upload to <span class="font-pink">UI</span><span class="font-light">Bites</span></h3>
+    <p class="font-light fs-md">Grab your image and fill the details</p>
   </div>
-  <div>
-    <label>Description</label>
-    <input type="text" [(ngModel)]="card.description" name="description" />
+  <div class="form-basic-holder">
+    <div class="form-basic-action">
+      <button class="btn btn-icon font-pink">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="form-basic-container">
+      <form *ngIf="card" class="form-basic">
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Title</label>
+          <input type="text" [(ngModel)]="card.title" name="title" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Description</label>
+          <input type="text" [(ngModel)]="card.description" name="description" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Url</label>
+          <input type="text" [(ngModel)]="card.url" name="url" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2" for="">Tags</label>
+          <input type="text" [(ngModel)]="card.tags" name="tags" class="input-forms full">
+        </div>
+        <button (click)="editCard()" class="btn btn-base btn-pink full">Save</button>
+      </form>
+    </div>
   </div>
-  <div>
-    <label>Url</label>
-    <input type="text" [(ngModel)]="card.url" name="url" />
-  </div>
-  <div>
-    <label for="">Tags</label>
-    <input type="text" [(ngModel)]="card.tags" name="tags">
-  </div>
-  <button (click)="editCard()">Save</button>
-</form>
+</div>
