@@ -4,14 +4,10 @@
       <img src="http://localhost:3000/{{card.photo}}" alt=" " class="media-image full">
     </div>
     <div class="media-body">
-      <div class="flexbox mb3">
-        <div class="mr2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-        </div>
+      <div class="mb3">
 
-        <div class="card-url">
-          <a href="#" class="fs-md font-pink url">{{ card.url }}</a>
-        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link mr2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+        <a href="#" class="fs-md font-pink url">{{ card.url }}</a>
       </div>
 
       <div class="vertical-align mb3">
@@ -53,8 +49,14 @@
     </div>
 
     <ul>
-      <li *ngFor="let comment of comentarios">
-        {{ comment.text }}
+      <li *ngFor="let comment of comentarios" class="fs-md flexbox mb5">
+        <div class="mr2 mb4" *ngIf="user">
+          <img class="avatar avatar-sm" src="http://localhost:3000/images/avatar.jpg" alt="">
+        </div>
+        <div *ngIf="user">
+          <h3>{{ user.name }}</h3>
+          <p>{{ comment.text }}</p>
+        </div>
       </li>
     </ul>
     <ng-template #elseBlock>
@@ -62,7 +64,7 @@
     </ng-template>
     <div *ngIf="user; else elseBlock">
       <h3 class="mb2">Leave a comment.</h3>
-      <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment" class="full mb2"></textarea>
+      <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment" class="full mb2 input-forms"></textarea>
       <button (click)="saveComment(card._id, comment.body)" class="btn btn-base btn-pink">Deja tu comentario</button>
     </div>
   </div>
