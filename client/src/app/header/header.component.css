@@ -17,15 +17,10 @@
   align-items: center;
 }
 
-.navbar-logo {
-  flex: 1;
-}
-
 .navbar-user {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex: 3;
 }
 
 .btn-upload-card {
@@ -36,15 +31,17 @@
   text-decoration: none;
 }
 
+.avatar,
+.btn-upload-card {
+  margin-right: 1rem;
+}
+
 @media screen and (min-width:768px){
-  .avatar {
-    margin-right: 4rem;
+  .navbar-logo {
+    flex: 1;
   }
 
-  .search-card-holder {
-    margin-right: 2rem;
-  }
-
+  .avatar,
   .btn-upload-card {
     margin-right: 4rem;
   }
