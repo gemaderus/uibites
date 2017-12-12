@@ -73,6 +73,10 @@ a {
   align-items: center;
 }
 
+.flexbox {
+  display: flex;
+}
+
 .container {
   max-width: 1190px;
   margin: auto;
@@ -305,6 +309,22 @@ a {
   margin-right: 1rem;
 }
 
+.mr2 {
+  margin-right: 2rem;
+}
+
+.mb2 {
+  margin-bottom: 2rem;
+}
+
+.mb3 {
+  margin-bottom: 3rem;
+}
+
+.mb5 {
+  margin-bottom: 5rem;
+}
+
 .avatar {
 
   border-radius: 50%;
@@ -327,6 +347,12 @@ a {
 @media screen and (min-width:768px){
   .form-basic-holder {
     width: 50%;
+  }
+
+  .media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .form-welcome {

@@ -1,40 +1,69 @@
-<div *ngIf="card">
-  <img src="http://localhost:3000/{{card.photo}}" alt=" ">
-  <h1> {{ card.title }}</h1>
-  <p>{{ card.description }}</p>
-  <p>{{ card.url }}</p>
-  <p>{{ card.tags.join(', ') }}</p>
+<div *ngIf="card" class="container container-card">
+  <div class="media mb5">
+    <div class="media-image-holder">
+      <img src="http://localhost:3000/{{card.photo}}" alt=" " class="media-image full">
+    </div>
+    <div class="media-body">
+      <div class="flexbox mb3">
+        <div class="mr2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+        </div>
 
-  <ul>
-    <li *ngFor="let comment of comentarios">
-      {{ comment.text }}
-    </li>
-  </ul>
+        <div class="card-url">
+          <a href="#" class="fs-md font-pink url">{{ card.url }}</a>
+        </div>
+      </div>
 
-  <div *ngIf="user">
-    <button (click)="deleteCard(card._id) ">Delete</button>
-    <a [routerLink]="['edit'] ">Edit</a>
-  </div>
-  <div>
-    <button class="btn btn-icon" (click)="addLike(card._id)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-    </button>
-    <div ng-repeat="count in newLikes">
-      <span>
-        <span class="likes-number" id="like">
-          {{card.likes}}
-        </span> likes
-      </span>
+      <div class="vertical-align mb3">
+        <button class="btn btn-icon" (click)="addLike(card._id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore mr2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </button>
+        <div ng-repeat="count in newLikes">
+          <span>
+            <span class="likes-number" id="like">
+              {{card.likes}}
+            </span> likes
+          </span>
+        </div>
+      </div>
+      <div class="vertical-align mb5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip mr2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+        <p>{{ card.tags.join(', ') }}</p>
+      </div>
+
+      <div *ngIf="user">
+        <div class="vertical-align">
+          <div class="mr2">
+            <a [routerLink]="['edit']" class="font-pink">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+              Edit
+            </a>
+          </div>
+          <button (click)="deleteCard(card._id)" class="btn btn-icon vertical-align fs-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+          Delete</button>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="container-inner">
+    <div class="card-content">
+      <h2 class="mb2"> {{ card.title }}</h2>
+      <p class="fs-lg mb5">{{ card.description }}</p>
+    </div>
 
-  <div *ngIf="user; else elseBlock">
-    <h2>Deja tu comentarios</h2>
-    <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment"></textarea>
-    <button (click)="saveComment(card._id, comment.body)">Deja tu comentario</button>
+    <ul>
+      <li *ngFor="let comment of comentarios">
+        {{ comment.text }}
+      </li>
+    </ul>
+    <ng-template #elseBlock>
+      <h3 class="mb3">You need to <a [routerLink]="['/login'] "class="font-pink">log in</a> to leave a comment.</h3>
+    </ng-template>
+    <div *ngIf="user; else elseBlock">
+      <h3 class="mb2">Leave a comment.</h3>
+      <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment" class="full mb2"></textarea>
+      <button (click)="saveComment(card._id, comment.body)" class="btn btn-base btn-pink">Deja tu comentario</button>
+    </div>
   </div>
-
-  <ng-template #elseBlock>
-    <a href="/login">Log in to comment</a>
-  </ng-template>
 </div>
