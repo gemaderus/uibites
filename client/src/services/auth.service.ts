@@ -19,6 +19,7 @@ export class AuthService {
   }
 
   public getUser() {
+    console.log("HOLI CARACOLI")
     let promise = new Promise((resolve, reject) => {
       const token = localStorage.getItem('auth_token');
       if (!token) {
@@ -31,17 +32,20 @@ export class AuthService {
       requestOptions.headers = headers;
 
       if (this.user == null) {
+        console.log("AQUI ENTRO SI ES NULL")
         this.http.get(`${BASEURL}/me`, requestOptions)
         .map(res => res.json())
         .subscribe(
           data => {
-            console.log(data)
+            console.log("DATA", data)
             this.user = data.user;
+            console.log("USER SERVICE", this.user)
             resolve(data.user);
           },
           error => reject(error)
         );
       } else {
+        console.log("AQUI ENTRO SI NO ES NULL")
         resolve(this.user);
       }
     });
@@ -90,5 +94,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth_token');
     this.user = null;
+    console.log(this.user)
   }
 }

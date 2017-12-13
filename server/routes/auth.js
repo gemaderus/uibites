@@ -89,6 +89,7 @@ authRoutes.post('/login', middleware.requireLogin, (req, res, next) => {
 });
 
 authRoutes.get('/me', middleware.requireAuth, (req, res, next) => {
+  console.log("ENTRO EN MEEEEEEEEEEEEEEEE");
   const userId = req.user._id
   const {username, name, email, bio} = req.user;
 

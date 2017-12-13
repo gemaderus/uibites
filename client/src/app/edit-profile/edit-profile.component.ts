@@ -15,19 +15,19 @@ export class EditProfileComponent implements OnInit {
     url: `http://localhost:3000/api/profile/{id}`
   });
 
-  formUser = {
-    name: '',
-    username: '',
-    email: '',
-    bio: '',
-  };
+  // formUser = {
+  //   name: '',
+  //   username: '',
+  //   email: '',
+  //   bio: '',
+  // };
 
   constructor(public profileService:ProfileService,
   public auth:AuthService, public route:ActivatedRoute,
   public router:Router) {
     this.route.params.subscribe(params => {
       this.profileService.getUserDetail(params['id'])
-        .subscribe(user => this.user = user);
+        .subscribe();
     })
   }
 
@@ -36,8 +36,8 @@ export class EditProfileComponent implements OnInit {
 
   editUser(id, user){
       this.route.params.subscribe(params => {
-        this.profileService.editUser(params['id'], this.formUser)
-        .subscribe(user => this.user = user);
+        this.profileService.editUser(params['id'], this.user)
+        .subscribe();
         this.router.navigate(['/user', params['id'], '/edit'])
       });
     }
