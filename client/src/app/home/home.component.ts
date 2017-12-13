@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { CardsService } from "../../services/cards.service";
 import { AuthService } from "../../services/auth.service";
 
@@ -13,7 +13,7 @@ import { AuthService } from "../../services/auth.service";
 })
 export class HomeComponent implements OnInit {
 
-  cards:any = [];
+  cards;
   user;
   constructor(public cardsService: CardsService, public authService: AuthService) {
     this.start();
@@ -36,5 +36,13 @@ export class HomeComponent implements OnInit {
         console.log(this.cards);
       });
     }
+  }
+
+  addLike (id) {
+    this.cardsService.doLike(id)
+      .subscribe(res => {
+        let card = this.cards.filter(e => e._id == res._id);
+        card[0].likes++;
+    });
   }
 }

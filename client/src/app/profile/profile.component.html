@@ -12,7 +12,8 @@
     <li *ngFor="let card of cards | filter:'title':pattern;" class="bites-item">
 
       <a [routerLink]="['/card', card._id]">
-      <img src="http://localhost:3000/{{card.photo}}" alt="" class="bites-image mb1 has-shadow">
+        <img src="http://localhost:3000/{{card.photo}}" alt="" class="bites-image mb1 has-shadow">
+      </a>
       <ul class="vertical-align bites-counters">
         <li class="vertical-align mr1">
           <button class="btn btn-icon" (click)="addLike(card._id)">
@@ -24,10 +25,9 @@
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           </div>
-          <span class="counter">{{ card.likes }}</span>
+          <span class="counter">{{ card.comments.length }}</span>
         </li>
       </ul>
-    </a>
     </li>
   </ul>
 </div>

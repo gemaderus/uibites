@@ -1,54 +1,40 @@
-<!-- <form (ngSubmit)="submitForm(profileForm)" #profileForm="ngForm">
-  <h2>Your profile</h2>
-  <div>
-    <label>Name</label>
-    <input type="text" [(ngModel)]="name" name="name" />
-  </div>
-  <div>
-    <label>Username</label>
-    <input type="text" [(ngModel)]="username" name="username" />
-  </div>
-  <div>
-    <label> Password </label>
-    <input type="password" [(ngModel)]="password" name="password" />
-  </div>
-
-  <div>
-    <label>Email</label>
-    <input type="email" [(ngModel)]="email" name="email" />
-  </div>
-  <div>
-    <label>Bio</label>
-    <input type="text" [(ngModel)]="bio" name="bio" />
-  </div>
-  <button type="submit">save</button>
-</form>
-
-<form action="">
-  <button (click)="deleteUser()">delete</button>
-</form>
-<p class="error"> {{ error }} </p> -->
-<!-- </div> -->
-<h1>Edit Your Profile</h1>
 <!-- <div *ngIf="!auth.user"> -->
-<form>
-  <div>
-    <label>Name</label>
-    <input type="text" [(ngModel)]="formUser.name" name="name" />
+<div class="form-container" *ngIf="!auth.user">
+  <div class="form-welcome">
+    <a [routerLink]="['']" class="btn btn-icon font-pink cross-mobile-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F1F1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cross-mobile"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </a>
+    <h3 class="uppercase font-light text-center">Modify your <span class="font-pink">PROFILE</span></h3>
+    <p class="font-light fs-md text-center">Fill the details that you want change</p>
   </div>
-  <div>
-    <label>Username</label>
-    <input type="text" [(ngModel)]="formUser.username" name="username" />
+  <div class="form-basic-holder">
+    <div class="form-basic-action">
+      <a [routerLink]="['']" class="font-pink cross-desktop-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </a>
+    </div>
+    <div class="form-basic-container">
+      <form class="form-basic">
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Name</label>
+          <input type="text" [(ngModel)]="formUser.name" name="name" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Username</label>
+          <input type="text" [(ngModel)]="formUser.username" name="username" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Email</label>
+          <input type="text" [(ngModel)]="formUser.email" name="email" class="input-forms full" />
+        </div>
+        <div class="form-group">
+          <label class="uppercase fs-xs mb2">Bio</label>
+          <input type="text" [(ngModel)]="formUser.bio" name="bio" class="input-forms full" />
+        </div>
+        <button type="button" (click)="editUser()" class="btn btn-base btn-pink full">Save</button>
+        <!-- <button (click)="submit()">Upload</button> -->
+        <!-- <button (click)="signup(username,password)"> signup </button> -->
+      </form>
+    </div>
   </div>
-  <div>
-    <label>Email</label>
-    <input type="text" [(ngModel)]="formUser.email" name="email" />
-  </div>
-  <div>
-    <label>Bio</label>
-    <input type="text" [(ngModel)]="formUser.bio" name="bio" />
-  </div>
-  <button type="button" (click)="editUser()">Save</button>
-  <!-- <button (click)="submit()">Upload</button> -->
-  <!-- <button (click)="signup(username,password)"> signup </button> -->
-</form>
+</div>

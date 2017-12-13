@@ -38,7 +38,7 @@ export class EditProfileComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.profileService.editUser(params['id'], this.formUser)
         .subscribe(user => this.user = user);
-        this.router.navigate(['/profile', params['id']])
+        this.router.navigate(['/user', params['id'], '/edit'])
       });
     }
 

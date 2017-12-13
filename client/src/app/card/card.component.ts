@@ -31,7 +31,8 @@ export class CardComponent implements OnInit {
       this.cardsService.getCardByID(params['id'])
         .subscribe(card => {
           this.card = card;
-          this.comentarios = card.comments
+          this.comentarios = card.comments;
+          console.log(this.comentarios);
         });
     })
   }
@@ -43,7 +44,7 @@ export class CardComponent implements OnInit {
   }
 
   saveComment (id, comment) {
-    this.comentarios.push({text : comment})
+    this.comentarios.push({text : comment}, )
     this.cardsService.saveComment(id, comment).subscribe(() => {
       this.comment.body = '';
     });

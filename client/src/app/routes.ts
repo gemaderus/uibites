@@ -46,7 +46,7 @@ export const routes: Routes = [
     { path: 'card/:id/edit', component: EditCardComponent },
 
     { path: 'user/:id', component: ProfileComponent },
-    { path: 'user/edit', component: EditProfileComponent },
+    { path: 'user/:id/edit', component: EditProfileComponent },
     //{ path: 'search/:tag', component: SearchComponent },
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: '**', redirectTo: '' }

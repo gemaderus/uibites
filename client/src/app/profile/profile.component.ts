@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProfileComponent implements OnInit {
   user;
   cards:any = [];
+  comments;
 
   constructor(
     public router:Router,
@@ -33,5 +34,20 @@ export class ProfileComponent implements OnInit {
       console.log(this.cards);
     });
   }
+
+  addLike (id) {
+    this.cardsService.doLike(id)
+      .subscribe(res => {
+        let card = this.cards.filter(e => e._id == res._id);
+        card[0].likes++
+    });
+  }
+
+  // counterComments() {
+  //   this.cardsService.saveComment()
+  //   subscribe(res => {
+  //
+  //   });
+  // }
 
 }

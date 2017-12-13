@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div *ngIf="card" class="container container-card">
   <div class="media mb5">
     <div class="media-image-holder">
@@ -15,11 +17,15 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore mr2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </button>
         <div ng-repeat="count in newLikes">
-          <span>
+          <span class="mr2">
             <span class="likes-number" id="like">
               {{card.likes}}
             </span> likes
           </span>
+        </div>
+        <div class="vertical-align">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square mr2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span> {{ card.comments.length }}</span>
         </div>
       </div>
       <div class="vertical-align mb5">
@@ -30,8 +36,8 @@
       <div *ngIf="user">
         <div class="vertical-align">
           <div class="mr2">
-            <a [routerLink]="['edit']" class="font-pink">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+            <a [routerLink]="['edit']" class="font-pink vertical-align">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 mr1"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
               Edit
             </a>
           </div>
@@ -64,8 +70,9 @@
     </ng-template>
     <div *ngIf="user; else elseBlock">
       <h3 class="mb2">Leave a comment.</h3>
-      <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment" class="full mb2 input-forms"></textarea>
-      <button (click)="saveComment(card._id, comment.body)" class="btn btn-base btn-pink">Deja tu comentario</button>
+      <textarea name="comment" id="" cols="30" rows="10" [(ngModel)]="comment.body" placeholder="Fill your comment" class="full input-forms"></textarea>
+      <button (click)="saveComment(card._id, comment.body)" class="btn btn-base btn-pink btn-save">Save</button>
     </div>
   </div>
 </div>
+<app-footer></app-footer>

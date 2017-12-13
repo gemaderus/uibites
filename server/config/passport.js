@@ -24,6 +24,7 @@ module.exports = () => {
   };
 
   const localLogin = new LocalStrategy(localOptions, (email, password, next) => {
+    console.log(email, password);
     User.findOne({ email }, (err, user) => {
       if (err) {
         return next(err);

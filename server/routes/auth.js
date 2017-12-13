@@ -25,8 +25,6 @@ authRoutes.post('/signup', (req, res, next) => {
     bio
   };
 
-  console.log('/signup', userInfo);
-
   if (!username || !password || !email) {
     res.status(422).json({ error: 'You must enter email, username and password' });
     return;
@@ -73,6 +71,8 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 authRoutes.post('/login', middleware.requireLogin, (req, res, next) => {
+  console.log('este es mi user: ' + req.user)
+
   const {username, name, email, bio} = req.user;
 
   const userInfo = {
@@ -89,9 +89,11 @@ authRoutes.post('/login', middleware.requireLogin, (req, res, next) => {
 });
 
 authRoutes.get('/me', middleware.requireAuth, (req, res, next) => {
+  const userId = req.user._id
   const {username, name, email, bio} = req.user;
 
   const userInfo = {
+    userId,
     username,
     name,
     email,

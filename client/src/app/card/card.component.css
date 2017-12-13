@@ -1,6 +1,6 @@
 .container-card {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
 }
 
 .media-image-holder {
@@ -23,6 +23,11 @@
 
 textarea {
   resize: none;
+  margin-bottom: 3rem;
+}
+
+.btn-save {
+  width: 100%;
 }
 
 @media screen and (min-width:768px){
@@ -37,5 +42,9 @@ textarea {
   .media-body {
     max-width: 400px;
     padding: 0 2rem;
+  }
+
+  .btn-save {
+    max-width: 300px;
   }
 }

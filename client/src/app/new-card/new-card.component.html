@@ -1,13 +1,16 @@
 <div class="form-container">
-  <div class="form-welcome text-center">
-    <h3 class="uppercase font-light">Upload to <span class="font-pink">UI</span><span class="font-light">Bites</span></h3>
-    <p class="font-light fs-md">Grab your image and fill the details</p>
+  <div class="form-welcome">
+    <a [routerLink]="['']" class="btn btn-icon font-pink cross-mobile-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F1F1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cross-mobile"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </a>
+    <h3 class="uppercase font-light text-center">Upload to <span class="font-pink">UI</span><span class="font-light">Bites</span></h3>
+    <p class="font-light fs-md text-center">Grab your image and fill the details</p>
   </div>
   <div class="form-basic-holder">
     <div class="form-basic-action">
-      <button class="btn btn-icon font-pink">
+      <a [routerLink]="['']" class="btn btn-icon font-pink cross-desktop-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
+      </a>
     </div>
     <div class="form-basic-container">
       <form class="form-basic">

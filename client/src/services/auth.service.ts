@@ -35,6 +35,7 @@ export class AuthService {
         .map(res => res.json())
         .subscribe(
           data => {
+            console.log(data)
             this.user = data.user;
             resolve(data.user);
           },
