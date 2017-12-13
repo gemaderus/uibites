@@ -12,6 +12,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  cuoreClass = false;
 
   cards;
   user;
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
     this.cardsService.doLike(id)
       .subscribe(res => {
         let card = this.cards.filter(e => e._id == res._id);
+        this.cuoreClass = true;
         card[0].likes++;
     });
   }
