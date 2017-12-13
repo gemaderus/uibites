@@ -13,7 +13,7 @@
       </a>
     </div>
     <div class="form-basic-container">
-      <form class="form-basic">
+      <form (ngSubmit)="submit()" #myForm="ngForm" class="form-basic">
         <div class="form-group">
           <label class="uppercase fs-xs mb2">Title</label>
           <input type="text" [(ngModel)]="newCard.title" name="title" class="input-forms full" />
@@ -40,7 +40,7 @@
           </div>
 
         </div>
-        <button (click)="submit()" class="btn btn-base btn-pink full">Upload</button>
+        <button type='submit' class="btn btn-base btn-pink full">Upload</button>
       </form>
     </div>
   </div>

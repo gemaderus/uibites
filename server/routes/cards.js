@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const passport = require('passport');
 
@@ -6,8 +7,25 @@ const middleware = require('../config/middleware');
 const dashboard = express.Router();
 const Card = require('../models/Card');
 const User  = require('../models/User');
-const multer  = require('multer');
-const upload = require('../config/multer');
+// const multer  = require('multer');
+// const multer  = require('multer');
+// const upload = require('../config/multer');
+
+var cloudinary = require('cloudinary');
+var cloudinaryStorage = require('multer-storage-cloudinary');
+// var express = require('express');
+var multer = require('multer');
+
+var storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: '',
+  allowedFormats: ['jpg', 'png'],
+  filename: function (req, file, cb) {
+    cb(undefined, 'my-file-name');
+  }
+});
+
+var upload = multer({ storage: storage });
 
 dashboard.get('/cards', middleware.requireAuth, (req, res, next) => {
   console.log('[GET] /cards', req.user);
@@ -33,7 +51,8 @@ dashboard.post('/cards', middleware.requireAuth, upload.single('file'), (req, re
     author_id: req.user._id,
     description: req.body.description,
     url: req.body.url,
-    photo: `/uploads/${req.file.filename}`,
+    photo: `${req.file.url}`,
+    // photo: `/uploads/${req.file.filename}`,
     tags: tags,
     likes: 0
   });
