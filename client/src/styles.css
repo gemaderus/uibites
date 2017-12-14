@@ -290,7 +290,7 @@ a {
   height: 300px;
 }
 
-.bites-image-link {
+.bites-image-holder {
   width: 100%;
   display: block;
 }
@@ -406,23 +406,15 @@ a {
     margin-bottom: 4rem;
     width: auto;
     width: 25%;
-    /*margin-right: 3%;*/
-    /*width: 260px;*/
   }
 
-  .bites-image-link {
+  .bites-image-holder {
     width: 90%;
   }
 
-  .bites-item div {
-    width: 100%;
-  }
   .bites-image {
     height: 200px;
-    /*max-width: 100%;*/
-    /*width: 260px;*/
-    margin-bottom: 1rem;
-    /*height: 226px;*/
+    /*margin-bottom: 1rem;*/
   }
 
 }

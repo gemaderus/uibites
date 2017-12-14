@@ -26,10 +26,6 @@ textarea {
   margin-bottom: 3rem;
 }
 
-.btn-save {
-  width: 100%;
-}
-
 @media screen and (min-width:768px){
   .media-image-holder {
     width: 60%;
@@ -42,9 +38,5 @@ textarea {
   .media-body {
     max-width: 400px;
     padding: 0 2rem;
-  }
-
-  .btn-save {
-    max-width: 300px;
   }
 }

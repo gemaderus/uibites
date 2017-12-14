@@ -3,7 +3,7 @@
 <div class="container container-profile">
   <div *ngIf="user" class="user-info">
     <div class="text-center">
-      <img src="http://localhost:3000/images/avatar.jpg" alt="" class="avatar avatar-lg avatar-has-shadow">
+      <img src="{{ user.photo }}" alt="" class="avatar avatar-lg avatar-has-shadow">
       <h2>{{ user.name }}</h2>
     </div>
     <p class="fs-lg user-bio">{{ user.bio}}</p>
@@ -11,7 +11,7 @@
   <ul class="bites-list bites-list-grid">
     <li *ngFor="let card of cards | filter:'title':pattern;" class="bites-item">
 
-      <a [routerLink]="['/card', card._id]">
+      <a [routerLink]="['/card', card._id]" class="bites-image-holder">
         <img src="{{card.photo}}" alt="" class="bites-image has-shadow">
       </a>
       <ul class="vertical-align bites-counters">

@@ -25,14 +25,16 @@ h1 {
 }
 
 .home-cards {
-  background-image: url(../../assets/images/background.svg);
+  background-image: linear-gradient(-134deg, #3023AE 0%, #C96DD8 100%);
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  /*background-size: auto 100%;*/
 }
 
 .home-cards-title {
   margin-bottom: 6rem;
-  padding-top: 55rem;
+  /*padding-top: 55rem;*/
 }
 
 .home-extension {
@@ -112,9 +114,13 @@ h1 {
 }
 
 @media screen and (min-width:768px){
+  .home-cards {
+    padding-bottom: 2rem;
+  }
+
   .home-cards-title {
-    margin-bottom: 8rem;
-    padding-top: 28rem;
+    /*margin-bottom: 8rem;*/
+    /*padding-top: 28rem;*/
   }
 
   .media {
