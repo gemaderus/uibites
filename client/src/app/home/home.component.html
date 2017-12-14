@@ -7,8 +7,10 @@
   </div>
   <ul class="bites-list bites-list-grid">
     <li *ngFor="let card of cards | filter:'title':pattern;" class="bites-item">
-      <a [routerLink]="['/card', card._id]">
-        <img src="{{card.photo}}" alt="" class="bites-image has-shadow">
+      <a [routerLink]="['/card', card._id]" class="bites-image-link">
+
+          <img src="{{card.photo}}" alt="" class="bites-image">
+
       </a>
       <ul class="vertical-align bites-counters">
         <li class="vertical-align mr1">

@@ -74,6 +74,7 @@ const cards = [
   photo:"http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513182711/data_lkzkhw.png",
   author_id: "5a2f16cd6ee07cc47f27e652",
   tags: ["chart", "icon", "visualization"],
+  likes: 0,
 },
 {
   title: "Icons",
@@ -82,6 +83,7 @@ const cards = [
   photo: "http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513182709/icon_pitnzv.jpg",
   author_id: "5a2f16cd6ee07cc47f27e652",
   tags: ["icons"],
+  likes: 0,
 },
 {
   title: "Courses App",
@@ -90,6 +92,7 @@ const cards = [
   photo: "http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513182710/courses.app_o5gidq.png",
   author_id: "5a2f16cd6ee07cc47f27e652",
   tags: ["app", "courses", "online"],
+  likes: 0,
 },
 {
   title: "Cheer",
@@ -98,6 +101,7 @@ const cards = [
   photo: "http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513182710/cheer_q1dish.png",
   author_id: "5a2f16cd6ee07cc47f27e652",
   tags: ["design", "uber", "campaigne"],
+  likes: 0,
 }
 ]
 
