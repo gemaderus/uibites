@@ -3,7 +3,13 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-import {BASE_URL} from '../app/helpers';
+// import {BASE_URL} from '../app/helpers';
+
+import { environment }  from '../environments/environment';
+
+const  NEWBASEURL = environment.BASE_URL;
+const BASE_URL = `${NEWBASEURL}/api`;
+
 
 @Injectable()
 export class CardsService {

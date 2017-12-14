@@ -6,7 +6,10 @@ import 'rxjs';
 // import {Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
-const BASEURL = "http://localhost:3000/api/auth";
+import { environment }  from '../environments/environment';
+
+const  NEWBASEURL = environment.BASE_URL;
+const BASEURL = `${NEWBASEURL}/api/auth`;
 
 @Injectable()
 export class AuthService {
