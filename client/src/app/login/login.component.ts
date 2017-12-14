@@ -24,15 +24,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem('auth_token');
     if (token) {
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
     }
   }
 
   login() {
     const {email, password} = this.formInfo;
     this.auth.login(this.formInfo)
-    .subscribe((user) => {
-      this.router.navigate(['']);
+    .subscribe((data) => {
+      localStorage.setItem('auth_token', data.token);
+      this.router.navigate(['/']);
     });
   }
 }

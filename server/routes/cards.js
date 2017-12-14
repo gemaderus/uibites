@@ -6,9 +6,8 @@ const middleware = require('../config/middleware');
 
 const dashboard = express.Router();
 const Card = require('../models/Card');
+const Comments = require('../models/Comments');
 const User  = require('../models/User');
-// const multer  = require('multer');
-// const multer  = require('multer');
 const upload = require('../config/multer');
 
 dashboard.get('/cards', middleware.requireAuth, (req, res, next) => {
@@ -57,15 +56,41 @@ dashboard.get('/card/:id', (req, res, next) => {
 
   let id = req.params.id;
 
-  Card.findById(id)
-    .populate('comments')
-    .exec((err, cards) => {
-      if (err) {
-        res.json({error: err});
-      } else {
-        res.json(cards);
-      }
+  const a = Comments.find({'card_id':id})
+    .populate('author_id')
+    .exec((err, comments) => comments);
+
+  const b = Card.findById(id)
+    .exec((err, cards) => cards);
+
+  Promise.all([a,b]).then(values => {
+    let comments = values[0];
+    let card = values[1];
+    comments = comments.map(comment => {
+      return {
+        text: comment.text,
+        author: {
+          name: comment.author_id.name,
+          photo: comment.author_id.photo
+        }
+      };
     });
+
+    res.json({
+      card,
+      comments
+    });
+  });
+
+  // Card.findById(id)
+  //   .populate('comments')
+  //   .exec((err, cards) => {
+  //     if (err) {
+  //       res.json({error: err});
+  //     } else {
+  //       res.json(cards);
+  //     }
+  //   });
 });
 
 dashboard.put('/card/:id', middleware.requireAuth, (req, res, next) => {

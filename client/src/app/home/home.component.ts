@@ -17,18 +17,19 @@ export class HomeComponent implements OnInit {
   cards;
   user;
   constructor(public cardsService: CardsService, public authService: AuthService) {
-    this.start();
+
   }
 
   ngOnInit() {
+    this.start();
   }
 
   start() {
     const token = localStorage.getItem('auth_token');
     if (token) {
       this.authService.getUser()
-        .then(user => {
-          this.user = user;
+        .subscribe(data => {
+          this.user = data.user;
         });
 
       this.cardsService.getList()
@@ -36,6 +37,8 @@ export class HomeComponent implements OnInit {
         this.cards = cards;
         console.log(this.cards);
       });
+    } else {
+      console.log("no hay token");
     }
   }
 

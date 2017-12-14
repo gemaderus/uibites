@@ -19,9 +19,8 @@ export class EditProfileComponent implements OnInit {
   public auth:AuthService, public route:ActivatedRoute,
   public router:Router) {
     this.auth.getUser()
-      .then(user => {
-        console.log("[edit profile component] user:", user);
-        this.user = user;
+      .subscribe(data => {
+        this.user = data.user;
       });
   }
 

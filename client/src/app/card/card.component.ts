@@ -23,16 +23,17 @@ export class CardComponent implements OnInit {
       const token = localStorage.getItem('auth_token');
       if (token) {
         this.authService.getUser()
-          .then(user => {
+          .subscribe(user => {
             this.user = user;
           });
       }
 
       this.cardsService.getCardByID(params['id'])
-        .subscribe(card => {
-          this.card = card;
-          this.comentarios = card.comments;
-          console.log(this.comentarios);
+        .subscribe(data => {
+          this.card = data.card;
+          this.comentarios = data.comments;
+
+          console.log(data.card);
         });
     })
   }
@@ -44,7 +45,14 @@ export class CardComponent implements OnInit {
   }
 
   saveComment (id, comment) {
-    this.comentarios.push({text : comment}, )
+    this.comentarios.push({
+      text : comment,
+      author: {
+        name: this.user.name,
+        photo: this.user.photo
+      }
+    });
+    
     this.cardsService.saveComment(id, comment).subscribe(() => {
       this.comment.body = '';
     });

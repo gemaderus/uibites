@@ -9,6 +9,14 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  formInfo = {
+    username: '',
+    name: '',
+    email: '',
+    password: '',
+    bio: ''
+  };
+
 
   constructor(public auth:AuthService, public router: Router, public route: ActivatedRoute) { }
 
@@ -19,11 +27,12 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  signup(username, password, name, email, bio){
+  signup(){
     console.log('entro en signup del componente')
-    console.log(username, password, name, email, bio)
-    this.auth.signup(username,password,name,email, bio).subscribe(
+    console.log(this.formInfo);
+    this.auth.signup(this.formInfo).subscribe(
       (user) => {
+      localStorage.setItem('auth_token', user.token);
       this.router.navigate(['']);
     });
   }

@@ -57,11 +57,11 @@
 
     <ul>
       <li *ngFor="let comment of comentarios" class="fs-md flexbox mb5">
-        <div class="mr2 mb4" *ngIf="user">
-          <img src="http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513187718/profile_g0rcjz.jpg" alt=" " class="avatar avatar-sm ">
+        <div class="mr2 mb4">
+          <img src="{{comment.author.photo}}" alt=" " class="avatar avatar-sm ">
         </div>
-        <div *ngIf="user">
-          <h3>{{ user.name }}</h3>
+        <div>
+          <h3>{{ comment.author.name}}</h3>
           <p>{{ comment.text }}</p>
         </div>
       </li>

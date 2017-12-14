@@ -2,7 +2,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 const dbURL = process.env.MONGO_URL;
-mongoose.connect(dbURL, {
+const MONGO_LAB = process.env.MONGO_LAB;
+
+mongoose.connect(MONGO_LAB, {
   useMongoClient: true
 });
 

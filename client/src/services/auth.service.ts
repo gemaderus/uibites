@@ -2,8 +2,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs';
-//import { HttpHeaders } from '@angular/common/http';
-// import {Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { environment }  from '../environments/environment';
@@ -14,77 +12,57 @@ const BASEURL = `${NEWBASEURL}/api/auth`;
 @Injectable()
 export class AuthService {
 
-  private user:object;
+  private user;
   private options = {withCredentials: true};
-  private fetching:boolean;
-  private promise;
 
   constructor(private http: Http) {
-    console.log('authService');
-    this.fetching = false;
+    this.user = null;
   }
 
   public getUser() {
-    console.log("[getUser]");
+    const token = localStorage.getItem('auth_token');
 
-    if (this.fetching) {
-      return this.promise;
+    if (!token) {
+      return null;
     }
 
-    this.promise = new Promise((resolve, reject) => {
-      const token = localStorage.getItem('auth_token');
-      if (!token) {
-        reject();
-      }
+    if (this.user != null) {
+      return Observable.of({
+        user: this.user
+      });
+    }
 
-      const headers: Headers = new Headers();
-      headers.append('Authorization', token);
-      const requestOptions: RequestOptions = new RequestOptions();
-      requestOptions.headers = headers;
+    const headers: Headers = new Headers();
+    headers.append('Authorization', token);
+    const requestOptions: RequestOptions = new RequestOptions();
+    requestOptions.headers = headers;
 
-      if (this.user == null) {
-        console.log("[getUser] user null", this.user);
-        this.fetching = true;
+    const request = this.http.post(`${BASEURL}/me`, {}, requestOptions)
+      .map(res => res.json());
+    request
+      .subscribe(
+        data => {
+          this.user = data.user;
+        },
+        error => console.log(error)
+      );
 
-        this.http.post(`${BASEURL}/me`, {}, requestOptions)
-        .map(res => res.json())
-        .subscribe(
-          data => {
-            console.log("DATA", data)
-            this.user = data.user;
-            this.fetching = false;
-            console.log("USER SERVICE", this.user)
-            resolve(data.user);
-          },
-          error => {
-            this.fetching = false;
-            reject(error);
-          }
-        );
-      } else {
-        console.log("[getUser] user not null", this.user);
-        this.fetching = false;
-        resolve(this.user);
-      }
-    });
-
-    return this.promise;
+    return request;
   }
 
   private handleError(e) {
     return Observable.throw(e.json());
   }
 
-  signup(username,password, name, email, bio) {
+  signup(credentials) {
     console.log("entro en el signup del servicio")
-    const request =   this.http.post(`${BASEURL}/signup`, {username,password, name, email, bio})
+    const request = this.http.post(`${BASEURL}/signup`, {credentials})
       .map(res => res.json());
     request
       .subscribe(
           // We're assuming the response will be an object
           // with the JWT on an id_token key
         data => {
-          localStorage.setItem('auth_token', data.token);
           this.user = data.user;
         },
         error => console.log(error)
@@ -101,7 +79,6 @@ export class AuthService {
         // We're assuming the response will be an object
         // with the JWT on an id_token key
         data => {
-          localStorage.setItem('auth_token', data.token);
           this.user = data.user;
         },
         error => console.log(error)
@@ -113,6 +90,5 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth_token');
     this.user = null;
-    console.log(this.user)
   }
 }

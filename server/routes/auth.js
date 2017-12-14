@@ -16,13 +16,14 @@ function generateToken(user) {
 }
 
 authRoutes.post('/signup', (req, res, next) => {
-  const {username, password, name, email, bio} = req.body;
-
+  const {username, password, name, email, bio} = req.body.credentials;
+  console.log(username, email);
   const userInfo = {
     username,
     name,
     email,
-    bio
+    bio,
+    photo: "http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513289944/avatar-default_ycgmep.png"
   };
 
   if (!username || !password || !email) {
@@ -45,7 +46,8 @@ authRoutes.post('/signup', (req, res, next) => {
       username,
       password: hashPass,
       email,
-      bio
+      bio,
+      photo: "http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513289944/avatar-default_ycgmep.png"
     });
     return theUser.save();
   })

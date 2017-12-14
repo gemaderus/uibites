@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.user = null;
     this.authService.logout();
   }
 
@@ -25,12 +26,10 @@ export class HeaderComponent implements OnInit {
     const token = localStorage.getItem('auth_token');
     if (token) {
       this.authService.getUser()
-        .then(user => {
-          console.log("USR", user)
-          this.user = user;
+        .subscribe(data => {
+          this.user = data.user;
+          console.log('[header component]', this.user);
         });
     }
   }
-
-
 }
