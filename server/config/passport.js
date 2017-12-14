@@ -73,12 +73,4 @@ module.exports = () => {
 
   passport.use(localLogin);
   passport.use(jwtLogin);
-
-
-  // app.use((req,res,next) => {
-  //   res.locals.title = "Ironfunding";
-  //   res.locals.user = req.user;
-  //   next();
-  // });
-
 };

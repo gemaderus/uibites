@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="1046px" viewBox="0 0 1440 1046" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Gallery</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="54.0548999%" y2="53.5249503%" id="linearGradient-1">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C96DD8" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="64.609892%" y2="63.9764622%" id="linearGradient-2">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C96DD8" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-3">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C96DD8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gallery">
+            <g id="Background-slope">
+                <polygon id="Path-2" fill="url(#linearGradient-1)" opacity="0.498867754" points="5.60472892e-15 0.4375 1440 277.40625 1440 945.210938 0 945.210938"></polygon>
+                <polygon id="Path-2" fill="url(#linearGradient-2)" opacity="0.498867754" points="5.60472892e-15 50.4375 1440 327.40625 1440 995.210938 0 995.210938"></polygon>
+                <polygon id="Path-2" fill="url(#linearGradient-3)" points="5.60472892e-15 100.4375 1440 377.40625 1440 1045.21094 0 1045.21094"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

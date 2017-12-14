@@ -33,7 +33,7 @@ app.use('/api/comments', comments);
 app.use('/api/like', likes);
 
 app.use(function(req, res) {
-  res.sendfile(__dirname + '/public/index.html');
+  res.sendfile('public/index.html');
 });
 
 require('./config/error-handler')(app);
