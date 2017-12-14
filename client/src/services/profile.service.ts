@@ -28,26 +28,10 @@ export class ProfileService {
       // .catch(this.handleError);
   }
 
-// {name,username,email, bio, photo}
-
- //  editCard(id, card) {
- //   return this.http.put(`${BASE_URL}/dashboard/edit-card/${id}`,card, this.options)
- //    .map((res) => res.json());
- // }
-
   getUserDetail(id){
     // console.log(id)
     // console.log("entro en el front");
     return this.http.get(`${BASE_URL}/profile/user/${id}`)
                     .map(res => res.json());
   }
-
-  getEditUser(id){
-    // console.log(id)
-    // console.log("entro en el front");
-    return this.http.get(`${BASE_URL}/profile/edit-profile/${id}`)
-                    .map(res => res.json());
-  }
-
-
 }

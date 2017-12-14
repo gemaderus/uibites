@@ -12,15 +12,23 @@ const BASEURL = "http://localhost:3000/api/auth";
 export class AuthService {
 
   private user:object;
-  private options = {withCredentials:true};
+  private options = {withCredentials: true};
+  private fetching:boolean;
+  private promise;
 
   constructor(private http: Http) {
     console.log('authService');
+    this.fetching = false;
   }
 
   public getUser() {
-    console.log("HOLI CARACOLI")
-    let promise = new Promise((resolve, reject) => {
+    console.log("[getUser]");
+
+    if (this.fetching) {
+      return this.promise;
+    }
+
+    this.promise = new Promise((resolve, reject) => {
       const token = localStorage.getItem('auth_token');
       if (!token) {
         reject();
@@ -32,24 +40,32 @@ export class AuthService {
       requestOptions.headers = headers;
 
       if (this.user == null) {
-        console.log("AQUI ENTRO SI ES NULL")
-        this.http.get(`${BASEURL}/me`, requestOptions)
+        console.log("[getUser] user null", this.user);
+        this.fetching = true;
+
+        this.http.post(`${BASEURL}/me`, {}, requestOptions)
         .map(res => res.json())
         .subscribe(
           data => {
             console.log("DATA", data)
             this.user = data.user;
+            this.fetching = false;
             console.log("USER SERVICE", this.user)
             resolve(data.user);
           },
-          error => reject(error)
+          error => {
+            this.fetching = false;
+            reject(error);
+          }
         );
       } else {
-        console.log("AQUI ENTRO SI NO ES NULL")
+        console.log("[getUser] user not null", this.user);
+        this.fetching = false;
         resolve(this.user);
       }
     });
-    return promise;
+
+    return this.promise;
   }
 
   private handleError(e) {

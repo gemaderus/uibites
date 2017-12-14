@@ -73,13 +73,15 @@ authRoutes.post('/signup', (req, res, next) => {
 authRoutes.post('/login', middleware.requireLogin, (req, res, next) => {
   console.log('este es mi user: ' + req.user)
 
-  const {username, name, email, bio} = req.user;
+  const {id, username, name, email, bio, photo} = req.user;
 
   const userInfo = {
+    id,
     username,
     name,
     email,
-    bio
+    bio,
+    photo
   };
 
   res.status(200).json({
@@ -88,17 +90,18 @@ authRoutes.post('/login', middleware.requireLogin, (req, res, next) => {
   });
 });
 
-authRoutes.get('/me', middleware.requireAuth, (req, res, next) => {
+authRoutes.post('/me', middleware.requireAuth, (req, res, next) => {
   console.log("ENTRO EN MEEEEEEEEEEEEEEEE");
   const userId = req.user._id
-  const {username, name, email, bio} = req.user;
+  const {id,username, name, email, bio, photo} = req.user;
 
   const userInfo = {
-    userId,
+    id,
     username,
     name,
     email,
-    bio
+    bio,
+    photo
   };
 
   res.status(200).json({

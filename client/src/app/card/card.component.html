@@ -13,15 +13,17 @@
       </div>
 
       <div class="vertical-align mb3">
-        <button class="btn btn-icon" (click)="addLike(card._id)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore mr2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <div ng-repeat="count in newLikes">
-          <span class="mr2">
-            <span class="likes-number" id="like">
-              {{card.likes}}
-            </span> likes
-          </span>
+        <div>
+          <button class="btn btn-icon" (click)="addLike(card._id)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore mr1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+          <div ng-repeat="count in newLikes">
+            <span class="mr2">
+              <span class="likes-number" id="like">
+                {{card.likes}}
+              </span> likes
+            </span>
+          </div>
         </div>
         <div class="vertical-align">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square mr2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -57,7 +59,7 @@
     <ul>
       <li *ngFor="let comment of comentarios" class="fs-md flexbox mb5">
         <div class="mr2 mb4" *ngIf="user">
-          <img class="avatar avatar-sm" src="http://localhost:3000/images/avatar.jpg" alt="">
+          <img src="http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513187718/profile_g0rcjz.jpg" alt=" " class="avatar avatar-sm ">
         </div>
         <div *ngIf="user">
           <h3>{{ user.name }}</h3>

@@ -1,97 +1,99 @@
-<app-header></app-header>
+<div class="holder-flex">
+  <div class="main-content">
+    <app-header></app-header>
 
-<div *ngIf="authService.user; else elseBlock" class="container container-profile">
-  <div class="search-card-holder">
-    <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern" class="search-card fs-md" placeholder="Search">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#BD0FE1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-  </div>
-  <ul class="bites-list bites-list-grid">
-    <li *ngFor="let card of cards | filter:'title':pattern;" class="bites-item">
-      <a [routerLink]="['/card', card._id]" class="bites-image-link">
+    <div *ngIf="authService.user; else elseBlock" class="container container-profile">
+      <div class="search-card-holder">
+        <input id="cards_title" placeholder="card name" type="text" [(ngModel)]="pattern" class="search-card fs-md" placeholder="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#BD0FE1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+      </div>
+      <ul class="bites-list bites-list-grid">
+        <li *ngFor="let card of cards | filter:'title':pattern;" class="bites-item">
+          <a [routerLink]="['/card', card._id]" class="bites-image-link">
 
-          <img src="{{card.photo}}" alt="" class="bites-image">
+            <img src="{{card.photo}}" alt="" class="bites-image">
 
-      </a>
-      <ul class="vertical-align bites-counters">
-        <li class="vertical-align mr1">
-          <button class="btn btn-icon" (click)="addLike(card._id)">
-            <svg [style.fill] = "'cuoreClass' ? 'none' : 'red'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          </button>
-          <span class="counter">{{ card.likes }}</span>
-        </li>
-        <li class="vertical-align">
-          <div class="vertical-align">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            <span class="counter"> {{ card.comments.length }}</span>
-          </div>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
-<ng-template #elseBlock>
-  <div class="container">
-    <div class="home-intro">
-      <h1>Daily inspiration collected from daily ui archive and beyond. Hand picked, easily.</h1>
-      <a href="" class="font-pink">Join us
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
-      </a>
-    </div>
-  </div>
-  <div class="home-cards">
-    <div class="container">
-      <h1 class="home-cards-title">
-        <span class="font-pink">UI</span><span class="font-light">Bites is a place to<br> discover and explore </span>
-      </h1>
-      <ul class="bites-list">
-        <li class="bites-item">
-          <img src="../assets/images/bite1.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite2.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite3.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite4.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite5.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite6.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite7.png" alt="" class="bites-image">
-        </li>
-        <li class="bites-item">
-          <img src="../assets/images/bite8.png" alt="" class="bites-image">
+        </a>
+          <ul class="vertical-align bites-counters">
+            <li class="vertical-align mr1">
+              <button class="btn btn-icon" (click)="addLike(card._id)">
+              <svg [style.fill] = "'cuoreClass' ? 'none' : 'red'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart cuore"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+              <span class="counter">{{ card.likes }}</span>
+            </li>
+            <li class="vertical-align">
+              <div class="vertical-align">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span class="counter"> {{ card.comments.length }}</span>
+              </div>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
-  </div>
-
-  <div class="home-extension">
-    <div class="container">
-      <div class="media">
-        <div>
-          <img src="../assets/images/home-extension.png" alt="" class="home-extension-image">
-        </div>
-        <div class="media-body">
-          <h2>Start collecting.</h2>
-          <p>
-            <span class="extension-logo"><span class="font-pink">UI</span>Bites</span> is a fast, no-nonsense bookmarking site for people who value beauty and speed. There are no ads and no third-party tracking. You pay a few bucks a year, and that's
-            it.
-          </p>
-          <p>You can bookmark from any browser, using our browser extension.</p>
-          <a href="#" class="font-pink">Install extension
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
+    <ng-template #elseBlock>
+      <div class="container">
+        <div class="home-intro">
+          <h1>Daily inspiration collected from daily ui archive and beyond. Hand picked, easily.</h1>
+          <a href="" class="font-pink">Join us
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
         </a>
         </div>
       </div>
-    </div>
-  </div>
-</ng-template>
+      <div class="home-cards">
+        <div class="container">
+          <h1 class="home-cards-title">
+          <span class="font-pink">UI</span><span class="font-light">Bites is a place to<br> discover and explore </span>
+        </h1>
+          <ul class="bites-list">
+            <li class="bites-item">
+              <img src="../assets/images/bite1.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite2.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite3.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite4.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite5.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite6.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite7.png" alt="" class="bites-image">
+            </li>
+            <li class="bites-item">
+              <img src="../assets/images/bite8.png" alt="" class="bites-image">
+            </li>
+          </ul>
+        </div>
+      </div>
 
-<app-footer></app-footer>
+      <div class="home-extension">
+        <div class="container">
+          <div class="media">
+            <div>
+              <img src="../assets/images/home-extension.png" alt="" class="home-extension-image">
+            </div>
+            <div class="media-body">
+              <h2>Start collecting.</h2>
+              <p>
+                <span class="extension-logo"><span class="font-pink">UI</span>Bites</span> is a fast, no-nonsense bookmarking site for people who value beauty and speed. There are no ads and no third-party tracking. You pay a few bucks a year, and that's
+                it.
+              </p>
+              <p>You can bookmark from any browser, using our browser extension.</p>
+              <a href="#" class="font-pink">Install extension
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg>
+          </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <app-footer></app-footer>

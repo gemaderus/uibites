@@ -1,5 +1,5 @@
 <!-- <div *ngIf="!auth.user"> -->
-<div class="form-container" *ngIf="!auth.user">
+<div class="form-container" *ngIf="user">
   <div class="form-welcome">
     <a [routerLink]="['']" class="btn btn-icon font-pink cross-mobile-link">
       <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F1F1F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cross-mobile"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -17,23 +17,21 @@
       <form class="form-basic">
         <div class="form-group">
           <label class="uppercase fs-xs mb2">Name</label>
-          <input type="text" [(ngModel)]="formUser.name" name="name" class="input-forms full" />
+          <input type="text" [(ngModel)]="user.name" name="name" class="input-forms full" />
         </div>
         <div class="form-group">
           <label class="uppercase fs-xs mb2">Username</label>
-          <input type="text" [(ngModel)]="formUser.username" name="username" class="input-forms full" />
+          <input type="text" [(ngModel)]="user.username" name="username" class="input-forms full" />
         </div>
         <div class="form-group">
           <label class="uppercase fs-xs mb2">Email</label>
-          <input type="text" [(ngModel)]="formUser.email" name="email" class="input-forms full" />
+          <input type="text" [(ngModel)]="user.email" name="email" class="input-forms full" />
         </div>
         <div class="form-group">
           <label class="uppercase fs-xs mb2">Bio</label>
-          <input type="text" [(ngModel)]="formUser.bio" name="bio" class="input-forms full" />
+          <textarea [(ngModel)]="user.bio" name="bio" class="input-forms full"></textarea>
         </div>
         <button type="button" (click)="editUser()" class="btn btn-base btn-pink full">Save</button>
-        <!-- <button (click)="submit()">Upload</button> -->
-        <!-- <button (click)="signup(username,password)"> signup </button> -->
       </form>
     </div>
   </div>

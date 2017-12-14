@@ -15,45 +15,24 @@ export class EditProfileComponent implements OnInit {
     url: `http://localhost:3000/api/profile/{id}`
   });
 
-  // formUser = {
-  //   name: '',
-  //   username: '',
-  //   email: '',
-  //   bio: '',
-  // };
-
   constructor(public profileService:ProfileService,
   public auth:AuthService, public route:ActivatedRoute,
   public router:Router) {
-    this.route.params.subscribe(params => {
-      this.profileService.getUserDetail(params['id'])
-        .subscribe();
-    })
+    this.auth.getUser()
+      .then(user => {
+        console.log("[edit profile component] user:", user);
+        this.user = user;
+      });
   }
 
   ngOnInit() {
   }
 
   editUser(id, user){
-      this.route.params.subscribe(params => {
-        this.profileService.editUser(params['id'], this.user)
-        .subscribe();
-        this.router.navigate(['/user', params['id'], '/edit'])
-      });
-    }
-
-  // deleteUser(){
-  //   this.profileService.deleteUser().subscribe(() =>{
-  //     this.router.navigate(['/']);
-  //   });
+    this.route.params.subscribe(params => {
+      this.profileService.editUser(params['id'], this.user)
+      .subscribe();
+      this.router.navigate(['/user', params['id'], '/edit'])
+    });
   }
-
-  // submitForm(myForm) {
-  //   console.log(myForm);
-  // }
-
-
-  // updateUser(){
-  // this.profileService.updateUser().subscribe(() =>{
-  //   this.router.navigate(['/profile/:id']);
-  // });
+}

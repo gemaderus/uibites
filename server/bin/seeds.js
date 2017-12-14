@@ -20,6 +20,7 @@ const users = [
     username: 'gemaderus',
     password: encryptedPass,
     email: 'hi@gemaderus.com',
+    photo: "http://res.cloudinary.com/dmhb6ozxo/image/upload/q_50/v1513187718/profile_g0rcjz.jpg",
     bio: 'Living in Málaga. Frontend Developer - Javascript, Node.Js, Express.Js, Mongo DB, Angular, HTML & CSS',
   },
   {
