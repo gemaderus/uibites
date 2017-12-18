@@ -81,16 +81,6 @@ dashboard.get('/card/:id', (req, res, next) => {
       comments
     });
   });
-
-  // Card.findById(id)
-  //   .populate('comments')
-  //   .exec((err, cards) => {
-  //     if (err) {
-  //       res.json({error: err});
-  //     } else {
-  //       res.json(cards);
-  //     }
-  //   });
 });
 
 dashboard.put('/card/:id', middleware.requireAuth, (req, res, next) => {

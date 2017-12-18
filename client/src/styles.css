@@ -120,7 +120,7 @@ a {
 }
 
 .btn {
-  background-color: none;
+  background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;

@@ -16,8 +16,8 @@ export class EditCardComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.cardsService.getCardByID(params['id'])
-        .subscribe(card => this.card = card);
-    })
+        .subscribe(data => this.card = data.card);
+    });
   }
 
   editCard() {

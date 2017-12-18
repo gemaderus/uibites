@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CardComponent implements OnInit {
   user;
   card;
-  comentarios:Array<any> = [];
+  comments:Array<any> = [];
   comment = {
     body: ''
   };
@@ -23,15 +23,15 @@ export class CardComponent implements OnInit {
       const token = localStorage.getItem('auth_token');
       if (token) {
         this.authService.getUser()
-          .subscribe(user => {
-            this.user = user;
+          .subscribe(data => {
+            this.user = data.user;
           });
       }
 
       this.cardsService.getCardByID(params['id'])
         .subscribe(data => {
           this.card = data.card;
-          this.comentarios = data.comments;
+          this.comments = data.comments;
 
           console.log(data.card);
         });
@@ -45,14 +45,14 @@ export class CardComponent implements OnInit {
   }
 
   saveComment (id, comment) {
-    this.comentarios.push({
+    this.comments.push({
       text : comment,
       author: {
         name: this.user.name,
         photo: this.user.photo
       }
     });
-    
+
     this.cardsService.saveComment(id, comment).subscribe(() => {
       this.comment.body = '';
     });
